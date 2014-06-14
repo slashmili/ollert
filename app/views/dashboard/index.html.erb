@@ -13,7 +13,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
         <a href="#" id="openNewBoardPopup" class="glyphicon glyphicon-plus"></a>
-        <div id="newBoardPopup"  style="position:absolute;right:0;width:300px;display: none">
+        <div id="newBoardPopup">
           <%= render 'boards/form' %>
         </div>
         </li>
@@ -21,3 +21,18 @@
     </div>
   </div>
 </nav>
+
+
+<div class="container">
+  <div class="row">
+      <% @boards.each do |board| %>
+        <div class="col-md-3">
+            <%= link_to board, class: "dashboard-boards" do %>
+              <div class="dashboard-boards">
+                <%= board.title %>
+              </div>
+            <% end %>
+        </div>
+      <% end %>
+  </div>
+</div>

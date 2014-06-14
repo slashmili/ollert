@@ -30,7 +30,7 @@ group :development, :test do
   gem 'sqlite3'
 end
 
-gem 'pg', group: :development
+gem 'pg', group: :production
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

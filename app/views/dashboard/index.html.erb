@@ -1,0 +1,23 @@
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Ollert</a>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <form class="navbar-form navbar-left" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+      </form>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+        <a href="#" id="openNewBoardPopup" class="glyphicon glyphicon-plus"></a>
+        <div id="newBoardPopup"  style="position:absolute;right:0;width:300px;display: none">
+          <%= render 'boards/form' %>
+        </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

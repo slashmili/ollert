@@ -4,4 +4,4 @@ rmv:
 before_script:
     - bundle exec rake db:migrate
 bundler_args: --without development
-script: 'bundle exec rspec'
+script: 'rake db:test:prepare && bundle exec rspec'

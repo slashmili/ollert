@@ -3,5 +3,5 @@ rmv:
     - 2.1.0
 before_script:
     - bundle exec rake db:migrate
-bundler_args: --without development
+bundler_args: --without development production
 script: 'rake db:test:prepare && bundle exec rspec'

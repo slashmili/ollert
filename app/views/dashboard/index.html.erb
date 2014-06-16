@@ -1,14 +1,11 @@
-
-<div class="container">
-  <div class="row">
-      <% @boards.each do |board| %>
-        <div class="col-md-3">
-            <%= link_to board, class: "dashboard-boards" do %>
-              <div class="dashboard-boards">
-                <%= board.title %>
-              </div>
-            <% end %>
-        </div>
-      <% end %>
+<div class="row">
+  <% @boards.each do |board| %>
+    <div class="col-md-3">
+    <%= link_to board, class: "dashboard-boards" do %>
+      <div class="dashboard-boards">
+      <%= board.title %>
+    </div>
+  <% end %>
   </div>
+<% end %>
 </div>

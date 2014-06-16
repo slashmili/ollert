@@ -1,9 +1,19 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>title:</strong>
-  <%= @board.title %>
-</p>
+<strong>title:</strong>
+<%= @board.title %> <br />
 
-<%= link_to 'Edit', edit_board_path(@board) %> |
-<%= link_to 'Back', boards_path %>
+<div class="row">
+  <% @board.list.each do |list| %>
+    <div class="col-md-3">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= list.title %></h3>
+      </div>
+      <div class="panel-body">
+        body <br />
+      </div>
+    </div>
+  </div>
+<% end %>
+</div>

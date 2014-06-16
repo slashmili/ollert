@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140613034155) do
+ActiveRecord::Schema.define(version: 20140616011624) do
 
   create_table "boards", force: true do |t|
     t.string   "title"
@@ -20,5 +20,12 @@ ActiveRecord::Schema.define(version: 20140613034155) do
   end
 
   add_index "boards", ["title"], name: "index_boards_on_title", unique: true
+
+  create_table "lists", force: true do |t|
+    t.string   "title",      null: false
+    t.integer  "board_id",   null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

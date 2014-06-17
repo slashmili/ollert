@@ -1,28 +1,14 @@
-== README
+== Ollert
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Ollert is a web-based project management application. It's supposed to be as simple as Trello. 
+In the same time it should accept plugins to add new feature on top of it.
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Don't expect much from this project yet! I'm still finding my feets in Rails and the development version has a crapy interface :)
+
+If you are still insisting to see the daily build of development,
+knock yourself out http://hidden-stream-2543.herokuapp.com
+
+
+
+Devel status: {<img src="https://travis-ci.org/slashmili/ollert.svg?branch=develop" alt="Build Status" />}[https://travis-ci.org/slashmili/ollert]

@@ -3,7 +3,7 @@ require "test_helper"
 describe CardsController do
 
   let(:board) { Board.create!(title:'Foo with card') }
-  let(:list_done) { board.list.first }
+  let(:list_done) { board.lists.first }
   let(:card) { cards :one }
 
   it "gets index" do

@@ -10,6 +10,6 @@ describe Board do
 
   it "should create 3 list immediately after creation of new board" do
     board_with_3_lists = Board.create!(:title => "Foo with 3 boards")
-    board_with_3_lists.list.count.must_equal(3)
+    board_with_3_lists.lists.count.must_equal(3)
   end
 end

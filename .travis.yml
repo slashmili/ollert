@@ -1,7 +1,7 @@
 language: ruby
-rmv:
+rvm:
     - 2.1.0
 before_script:
     - bundle exec rake db:migrate
-bundler_args: --without development
-script: 'bundle exec rspec'
+bundler_args: --without development production
+script: 'rake db:test:prepare && rake test'

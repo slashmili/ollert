@@ -3,8 +3,6 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.1'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 gem 'bootstrap-sass'
@@ -14,6 +12,9 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
+
+#So static assets load in heroku
+gem 'rails_12factor', group: :production
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -28,8 +29,11 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 
 group :development, :test do
-  gem "rspec-rails", '~> 3.0.0'
+  gem "minitest-rails"
+  gem 'sqlite3'
 end
+
+gem 'pg', group: :production
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -43,3 +47,4 @@ end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+ruby "2.1.0", group: :production

@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<strong>title:</strong>
+<%= @board.title %> <br />
+
+<div class="row">
+  <% @board.lists.each do |list| %>
+    <div class="col-md-3">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= list.title %></h3>
+      </div>
+      <div class="panel-body">
+        <% list.cards.each do |card| %>
+          <%= card.title %> <br />
+        <% end %>
+      </div>
+      <div class="panel-body">
+        <a href="#" class="new-card-opener" data-popupname="addCardPopup<%= list.id %>">Add a card ...</a>
+        <div id="addCardPopup<%= list.id %>" class="hidden">
+          <%= form_for(@new_card, remote:true, format: :json) do |f| %>
+            <%= f.text_area :title %>
+          <%= f.hidden_field :list_id, value: list.id %>
+          <%= f.submit class: "btn btn-success" %>
+          <a href="#" class="new-card-closer" data-popupname="addCardPopup<%= list.id %>"><span class="glyphicon glyphicon-remove"></span></a>
+         <%end%>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+</div>

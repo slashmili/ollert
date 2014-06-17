@@ -21,7 +21,7 @@
           <%= form_for(@new_card, remote:true, format: :json) do |f| %>
             <%= f.text_area :title %>
           <%= f.hidden_field :list_id, value: list.id %>
-          <%= f.submit class: "btn btn-success" %>
+          <%= f.submit class: "btn btn-success new-card-closer", 'data-popupname' => "addCardPopup#{list.id}" %>
           <a href="#" class="new-card-closer" data-popupname="addCardPopup<%= list.id %>"><span class="glyphicon glyphicon-remove"></span></a>
          <%end%>
         </div>

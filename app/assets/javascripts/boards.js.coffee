@@ -11,4 +11,3 @@ $( document ).ready ->
   $('.new-card-closer').click (e)->
     div_name = $(this).data('popupname')
     $('#' + div_name).toggleClass('hidden')
-    e.preventDefault()

@@ -29,6 +29,10 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 
 group :development, :test do
+  #gem 'webkit-webdriver'
+  #gem 'capybara-webkit'
+  gem 'selenium-webdriver'
+  gem "minitest-rails-capybara"
   gem "minitest-rails"
   gem 'sqlite3'
 end

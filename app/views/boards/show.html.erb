@@ -16,7 +16,7 @@
         <% end %>
       </div>
       <div class="panel-body">
-        <a href="#" class="new-card-opener" data-popupname="addCardPopup<%= list.id %>">Add a card ...</a>
+        <a href="#" id="newCardOpenner<%= list.id %>" class="new-card-opener" data-popupname="addCardPopup<%= list.id %>">Add a card ...</a>
         <div id="addCardPopup<%= list.id %>" class="hidden">
           <%= form_for(@new_card, remote:true, format: :json) do |f| %>
             <%= f.text_area :title %>

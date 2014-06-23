@@ -1,10 +1,15 @@
 require "test_helper"
 
 describe CardsController do
+  include Devise::TestHelpers
 
   let(:board) { Board.create!(title:'Foo with card') }
   let(:list_done) { board.lists.first }
   let(:card) { cards :one }
+
+  before do
+    sign_in users(:one)
+  end
 
   it "gets index" do
     get :index

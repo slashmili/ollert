@@ -29,4 +29,20 @@
     </div>
   </div>
 <% end %>
+    <div class="col-md-3">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <a href="#" id="newListOpener">Add a list</a>
+          <div id="addListPopup" class="hidden">
+            <% @new_list = List.new %>
+            <%= form_for(@new_list, remote: true, format: :json) do |f| %>
+              <%= f.text_field :title %>
+              <%= f.hidden_field :board_id, value: @board.id %>
+              <%= f.submit class: "btn btn-success", id: "submitNewList"%>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+
 </div>

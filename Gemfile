@@ -36,6 +36,7 @@ group :development, :test do
   gem "minitest-rails"
   gem 'sqlite3'
   gem 'factory_girl'
+  gem 'guard-minitest'
 end
 
 gem 'devise'

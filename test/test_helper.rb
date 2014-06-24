@@ -11,13 +11,14 @@ require "minitest/rails/capybara"
 
 require "minitest/pride"
 class ActiveSupport::TestCase
-    ActiveRecord::Migration.check_pending!
+  ActiveRecord::Migration.check_pending!
 
-    # Setup all fixtures in test/fixtures/*.(yml|csv) for all tests in alphabetical order.
+  # Setup all fixtures in test/fixtures/*.(yml|csv) for all tests in alphabetical order.
   #
   # Note: You'll currently still have to declare fixtures explicitly in integration tests
   # -- they do not yet inherit this setting
   fixtures :all
+  #self.use_transactional_fixtures = false
 
   # Add more helper methods to be used by all tests here...
 end
@@ -29,4 +30,21 @@ end
 
 class ActionController::TestCase
     include Devise::TestHelpers
+end
+
+#TODO: why I cant load it from it's own directory?
+FactoryGirl.define do
+  factory :board do
+    title = 'FooBoard'
+  end
+
+  factory :user do
+    email 'foo@example.com'
+    password 'f4k3p455w0rd'
+  end
+
+  factory :card do
+    title 'Card title'
+    list_id 0
+  end
 end

@@ -37,6 +37,7 @@ group :development, :test do
   gem 'sqlite3'
   gem 'factory_girl'
   gem 'guard-minitest'
+  gem 'database_cleaner'
 end
 
 gem 'devise'

@@ -1,14 +1,29 @@
 require "test_helper"
 
+
+
+DatabaseCleaner.strategy = :transaction
+
+class MiniTest::Spec
+  before :each do
+    DatabaseCleaner.start
+  end
+
+  after :each do
+    DatabaseCleaner.clean
+  end
+end
+
 describe CardsController do
   include Devise::TestHelpers
 
-  let(:board) { Board.create!(title:'Foo with card') }
+  let(:board) { FactoryGirl.create(:board, title:'Foo with card') }
   let(:list_done) { board.lists.first }
-  let(:card) { cards :one }
+  let(:card) { FactoryGirl.create(:card, list_id: list_done.id)}
 
   before do
-    sign_in users(:one)
+    @user = FactoryGirl.create(:user)
+    sign_in @user
   end
 
   it "gets index" do

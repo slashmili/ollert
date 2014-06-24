@@ -1,11 +1,5 @@
 require "test_helper"
 
-#TODO: why I cant load it from it's own directory?
-FactoryGirl.define do
-  factory :board do
-    title = 'FooBoard'
-  end
-end
 feature "CanAddCardToList" do
   self.use_transactional_fixtures = false
   background do

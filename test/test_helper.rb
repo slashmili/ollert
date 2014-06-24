@@ -10,7 +10,6 @@ require 'minitest/spec'
 require "minitest/rails/capybara"
 
 require "minitest/pride"
-
 class ActiveSupport::TestCase
     ActiveRecord::Migration.check_pending!
 
@@ -23,6 +22,10 @@ class ActiveSupport::TestCase
   # Add more helper methods to be used by all tests here...
 end
 
+class MiniTest::Spec
+  #TODO:check why it's not working
+  include FactoryGirl::Syntax::Methods
+end
 
 class ActionController::TestCase
     include Devise::TestHelpers

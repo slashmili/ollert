@@ -2,7 +2,8 @@ require "test_helper"
 
 feature "Can Create Board" do
   before(:all) do
-      #Capybara.current_driver = :webkit
+    #TODO: How can I apply it for all?
+    #Capybara.current_driver = :webkit
   end
   scenario "Create new board and make sure there are three list assinged to it", js: true do
     visit root_path

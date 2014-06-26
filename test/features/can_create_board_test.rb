@@ -6,6 +6,7 @@ feature "Can Create Board" do
     #Capybara.current_driver = :webkit
   end
   scenario "Create new board and make sure there are three list assinged to it", js: true do
+    skip
     visit root_path
     board_title = 'board_num#' + rand(10000).to_s
     click_link 'openNewBoardPopup'

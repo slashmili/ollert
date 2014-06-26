@@ -6,4 +6,7 @@ namespace :test do
     end
   end
 end
+
 Rake::Task["test:run"].enhance ["test:features"]
+
+task test: :"db:test:prepare"

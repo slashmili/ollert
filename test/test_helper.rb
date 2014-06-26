@@ -34,12 +34,20 @@ end
 
 #TODO: why I cant load it from it's own directory?
 FactoryGirl.define do
+  sequence :email do |n|
+    "email#{n}@factory.com"
+  end
+
+  sequence :title do |n|
+    "FooBoard#{n}"
+  end
+
   factory :board do
-    title = 'FooBoard'
+    title
   end
 
   factory :user do
-    email 'foo@example.com'
+    email
     password 'f4k3p455w0rd'
   end
 

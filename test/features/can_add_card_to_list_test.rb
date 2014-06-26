@@ -8,7 +8,7 @@ feature "CanAddCardToList" do
     Capybara.default_selector = :css
     #TODO: how can I cleanup the db so I don't need to create a unique name!
     board_title = 'board_num#'+ rand(10000).to_s
-    board = FactoryGirl.create(:board, title: board_title)
+    board = create(:board, title: board_title)
     lists = board.lists
 
     skip

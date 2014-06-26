@@ -1,18 +1,14 @@
 require "test_helper"
 
-
-
-
-
 describe CardsController do
   include Devise::TestHelpers
 
-  let(:board) { FactoryGirl.create(:board) }
+  let(:board) { create(:board) }
   let(:list_done) { board.lists.first }
-  let(:card) { FactoryGirl.create(:card, list_id: list_done.id)}
+  let(:card) { create(:card, list_id: list_done.id)}
 
   before do
-    @user = FactoryGirl.create(:user)
+    @user = create(:user)
     sign_in @user
   end
 
@@ -29,8 +25,8 @@ describe CardsController do
 
   it "creates card" do
     skip
-    FactoryGirl.create(:card)
-    FactoryGirl.create(:card)
+    create(:card)
+    create(:card)
     assert_difference('Card.count') do
       post :create, card: { list_id: list_done.id, title: 'creates card' }
     end

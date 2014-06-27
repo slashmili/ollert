@@ -11,12 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140622142711) do
+ActiveRecord::Schema.define(version: 20140627172442) do
 
   create_table "boards", force: true do |t|
     t.string   "title"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id",    default: 0, null: false
   end
 
   add_index "boards", ["title"], name: "index_boards_on_title", unique: true

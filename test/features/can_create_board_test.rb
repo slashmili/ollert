@@ -1,12 +1,13 @@
 require "test_helper"
 
 feature "Can Create Board" do
+  include Warden::Test::Helpers
   before(:all) do
-    #TODO: How can I apply it for all?
-    #Capybara.current_driver = :webkit
+    Warden.test_mode!
+    @user = create(:user)
   end
   scenario "Create new board and make sure there are three list assinged to it", js: true do
-    skip
+    login_as @user, :scope => :user
     visit root_path
     board_title = 'board_num#' + rand(10000).to_s
     click_link 'openNewBoardPopup'

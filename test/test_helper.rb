@@ -5,23 +5,13 @@ require "minitest/rails"
 require 'minitest/autorun'
 require 'minitest/spec'
 
-# To add Capybara feature tests add `gem "minitest-rails-capybara"`
-# to the test group in the Gemfile and uncomment the following:
 require "minitest/rails/capybara"
-
 require "minitest/pride"
+
 class ActiveSupport::TestCase
   ActiveRecord::Migration.check_pending!
-
   include FactoryGirl::Syntax::Methods
-  # Setup all fixtures in test/fixtures/*.(yml|csv) for all tests in alphabetical order.
-  #
-  # Note: You'll currently still have to declare fixtures explicitly in integration tests
-  # -- they do not yet inherit this setting
-  fixtures :all
-  #self.use_transactional_fixtures = false
-
-  # Add more helper methods to be used by all tests here...
+  self.use_transactional_fixtures = false
 end
 
 class ActionController::TestCase

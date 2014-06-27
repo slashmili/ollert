@@ -12,6 +12,9 @@ class ActiveSupport::TestCase
   ActiveRecord::Migration.check_pending!
   include FactoryGirl::Syntax::Methods
   self.use_transactional_fixtures = false
+  Capybara.default_selector = :css
+  #TODO: it's still not working!
+  Capybara.current_driver = :webkit
 end
 
 class ActionController::TestCase

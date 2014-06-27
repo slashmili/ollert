@@ -2,8 +2,7 @@ require "test_helper"
 
 feature "Can Create Board" do
   include Warden::Test::Helpers
-  before(:all) do
-    Warden.test_mode!
+  background do
     @user = create(:user)
   end
   scenario "Create new board and make sure there are three list assinged to it", js: true do
@@ -13,7 +12,7 @@ feature "Can Create Board" do
     click_link 'openNewBoardPopup'
     fill_in 'board_title', with: board_title
     click_button 'board-submit'
-    page.must_have_content 'title: ' + board_title
+    page.must_have_content "title: #{board_title}"
     page.must_have_content 'Todo'
   end
 end

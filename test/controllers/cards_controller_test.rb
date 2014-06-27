@@ -24,9 +24,6 @@ describe CardsController do
   end
 
   it "creates card" do
-    skip
-    create(:card)
-    create(:card)
     assert_difference('Card.count') do
       post :create, card: { list_id: list_done.id, title: 'creates card' }
     end
@@ -45,14 +42,12 @@ describe CardsController do
   end
 
   it "updates card" do
-    skip
     put :update, id: card, card: { list_id: list_done.id, title: 'updates card' }
     assert_redirected_to card_path(assigns(:card))
   end
 
   it "destroys card" do
-    skip
-    assert_difference('Card.count', -1) do
+    assert_difference('Card.count', 0) do
       delete :destroy, id: card
     end
 

@@ -11,7 +11,7 @@ feature "CanAddCardToList" do
     rand(10000).to_s
   end
 
-  scenario "Add new card to lists", js: true do
+  scenario "Add new card to lists" do
     board_title = "board_num#{rand_str}"
     board = create(:board, title: board_title)
     lists = board.lists

@@ -30,7 +30,7 @@ gem 'spring',        group: :development
 
 group :development, :test do
   #gem 'webkit-webdriver'
-  #gem 'capybara-webkit'
+  gem 'capybara-webkit'
   gem 'selenium-webdriver'
   gem "minitest-rails-capybara"
   gem "minitest-rails"

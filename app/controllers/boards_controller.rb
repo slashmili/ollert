@@ -66,7 +66,8 @@ class BoardsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_board
-      @board = Board.find(params[:id])
+      @board = current_user.boards.find(params[:id])
+      redirect_to new_user_session unless @board
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

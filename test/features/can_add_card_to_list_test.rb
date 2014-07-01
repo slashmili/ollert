@@ -13,7 +13,7 @@ feature "CanAddCardToList" do
 
   scenario "Add new card to lists" do
     board_title = "board_num#{rand_str}"
-    board = create(:board, title: board_title)
+    board = create(:board, title: board_title, user: @user)
     lists = board.lists
 
     visit board_path board

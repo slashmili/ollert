@@ -24,7 +24,15 @@ board_show_ready = () ->
     receive: (e, ui) ->
       card_id = ui.item.data('card-id')
       list_id = ui.item.parent().data('list-id')
-      $.ajax({url:'/cards/' + card_id + '.json', type: 'PUT', data:{'card[list_id]':list_id}})
+      prev_pos = ui.item.prev().data('card-position') or 0.0
+      next_pos = ui.item.next().data('card-position') or parseFloat(prev_pos) + 1.0
+      new_pos = (parseFloat next_pos + parseFloat prev_pos)/2
+      $.ajax {
+        url:'/cards/' + card_id + '.json',
+        type: 'PUT',
+        data: {'card[list_id]':list_id, 'card[position]': new_pos}
+      }
+      ui.item.data('card-position', new_pos)
   }
   .disableSelection()
 

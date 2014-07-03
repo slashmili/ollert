@@ -12,8 +12,8 @@
       </div>
       <div class="panel-body">
         <ul class="cards" data-list-id="<%= list.id %>" style="background-color:#f0f0f0;min-height:50px">
-        <% list.cards.each do |card| %>
-          <li data-card-id="<%= card.id %>"><%= card.title %></li>
+        <% list.cards.order('position').each do |card| %>
+          <li data-card-id="<%= card.id %>" data-card-position="<%= card.position %>"><%= card.title %></li>
         <% end %>
         <ul>
       </div>

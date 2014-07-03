@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140627172442) do
+ActiveRecord::Schema.define(version: 20140703004243) do
 
   create_table "boards", force: true do |t|
     t.string   "title"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20140627172442) do
     t.integer  "list_id",    null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.float    "position"
   end
 
   create_table "lists", force: true do |t|

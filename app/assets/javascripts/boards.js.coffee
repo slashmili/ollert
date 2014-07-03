@@ -19,5 +19,14 @@ board_show_ready = () ->
   $('#submitNewList').click (e)->
     $('#addListPopup').toggleClass('hidden')
 
+  $('.cards').sortable {
+    connectWith: '.cards',
+    receive: (e, ui) ->
+      card_id = ui.item.data('card-id')
+      list_id = ui.item.parent().data('list-id')
+      $.ajax({url:'/cards/' + card_id + '.json', type: 'PUT', data:{'card[list_id]':list_id}})
+  }
+  .disableSelection()
+
 $( document ).ready(board_show_ready)
 $( document ).on('page:load', board_show_ready)

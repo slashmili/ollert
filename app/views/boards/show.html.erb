@@ -11,9 +11,11 @@
         <h3 class="panel-title"><%= list.title %></h3>
       </div>
       <div class="panel-body">
+        <ul class="cards" data-list-id="<%= list.id %>" style="background-color:#f0f0f0;min-height:50px">
         <% list.cards.each do |card| %>
-          <%= card.title %> <br />
+          <li data-card-id="<%= card.id %>"><%= card.title %></li>
         <% end %>
+        <ul>
       </div>
       <div class="panel-body">
         <a href="#" id="newCardOpenner<%= list.id %>" class="new-card-opener" data-popupname="addCardPopup<%= list.id %>">Add a card ...</a>

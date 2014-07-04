@@ -11,7 +11,7 @@
         <h3 class="panel-title"><%= list.title %></h3>
       </div>
       <div class="panel-body">
-        <ul class="cards" data-list-id="<%= list.id %>" style="background-color:#f0f0f0;min-height:50px">
+        <ul class="cards" data-list-id="<%= list.id %>" id="cardList<%= list.id %>" style="background-color:#f0f0f0;min-height:50px">
         <% list.cards.order('position').each do |card| %>
           <li data-card-id="<%= card.id %>" data-card-position="<%= card.position %>"><%= card.title %></li>
         <% end %>
@@ -20,7 +20,7 @@
       <div class="panel-body">
         <a href="#" id="newCardOpenner<%= list.id %>" class="new-card-opener" data-popupname="addCardPopup<%= list.id %>">Add a card ...</a>
         <div id="addCardPopup<%= list.id %>" class="hidden">
-          <%= form_for(@new_card, remote:true, format: :json) do |f| %>
+          <%= form_for(@new_card, remote:true, format: :json, html: {class: "new-card-form"}) do |f| %>
             <%= f.text_area :title %>
           <%= f.hidden_field :list_id, value: list.id %>
           <%= f.submit class: "btn btn-success new-card-closer", 'data-popupname' => "addCardPopup#{list.id}" %>

@@ -36,5 +36,9 @@ board_show_ready = () ->
   }
   .disableSelection()
 
+  $('.new-card-form').bind 'ajax:success', (evt, data, status, xhr) ->
+    li = "<li data-card-id='#{data.id}' data-card-position='#{data.position}'>#{data.title}</li>"
+    $("#cardList#{data.list_id}").append(li)
+
 $( document ).ready(board_show_ready)
 $( document ).on('page:load', board_show_ready)

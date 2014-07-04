@@ -23,7 +23,6 @@ feature "CanAddCardToList" do
       fill_in 'card_title', with: card_text
       click_button 'Create Card'
     end
-    visit board_path board
     page.must_have_content card_text
   end
 end

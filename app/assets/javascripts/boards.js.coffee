@@ -21,7 +21,7 @@ board_show_ready = () ->
 
   $('.cards').sortable {
     connectWith: '.cards',
-    receive: (e, ui) ->
+    stop: (e, ui) ->
       card_id = ui.item.data('card-id')
       list_id = ui.item.parent().data('list-id')
       prev_pos = ui.item.prev().data('card-position') or 0.0

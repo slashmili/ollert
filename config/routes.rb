@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   resources :lists
 
-  root 'dashboard#index'
+  root 'dashboard#ember'
   resources :boards
 
   # The priority is based upon order of creation: first created -> highest priority.

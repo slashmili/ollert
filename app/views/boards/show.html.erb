@@ -1,7 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<strong>title:</strong>
-<%= @board.title %> <br />
+<h3><%= @board.title %></h3>
 
 <div class="row">
   <% @board.lists.each do |list| %>
@@ -13,7 +12,7 @@
       <div class="panel-body">
         <ul class="cards" data-list-id="<%= list.id %>" id="cardList<%= list.id %>" style="background-color:#f0f0f0;min-height:50px">
         <% list.cards.order('position').each do |card| %>
-          <li data-card-id="<%= card.id %>" data-card-position="<%= card.position %>"><%= card.title %></li>
+          <li class="card" data-card-id="<%= card.id %>" data-card-position="<%= card.position %>"><%= card.title %></li>
         <% end %>
         <ul>
       </div>

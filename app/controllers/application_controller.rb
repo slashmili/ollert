@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_filter :authenticate_user!
 
+  respond_to :html, :json
   def initialize
     super
     @new_board = Board.new

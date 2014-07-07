@@ -6,7 +6,9 @@ nav.navbar.navbar-default
     div.collapse.navbar-collapse
       ul.nav.navbar-nav
         li
-          a href="#" Hellow
+          = link-to "signup" | Sign Up
+        li
+          = link-to "signup" | Login
 section#main
   = outlet
 

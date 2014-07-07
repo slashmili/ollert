@@ -8,7 +8,7 @@ nav.navbar.navbar-default
         li
           = link-to "signup" | Sign Up
         li
-          = link-to "signup" | Login
+          = link-to "login" | Login
 section#main
   = outlet
 

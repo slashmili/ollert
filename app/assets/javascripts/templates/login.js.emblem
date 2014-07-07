@@ -1,0 +1,23 @@
+if errorMsg
+  = errorMsg
+
+section.singup
+  form role="form"
+    h4 Log In
+    div.form-group
+        label for="email" Email
+        = view Em.TextField valueBinding="email" id="email" placeholder="e.g., sam.rast@bar.com" class="form-control"
+    div.form-group
+        label for="password" Password
+        = view Em.TextField type="password" valueBinding="password" id="password" placeholder="e.g, ********" class="form-control"
+    button class="btn btn-default" type="submit" click="login" Log In
+    p
+      | #{link-to "signup" | Forget your password?}
+  form.auth-3rd
+    h4 Or log in with:
+    p
+      button class="btn btn-success" type="submit" Google Account
+    p
+      button class="btn btn-primary" type="submit" Facebook
+    p
+      button class="btn btn-default" type="submit" Github

@@ -1,5 +1,3 @@
-# for more details see: http://emberjs.com/guides/controllers/
-
 Ollert.AuthController = Ember.Controller.extend
   register: (route) ->
     me = @
@@ -17,4 +15,19 @@ Ollert.AuthController = Ember.Controller.extend
       error: (xhr, textStatus, errorThrown) ->
         err = eval "(#{xhr.responseText})"
         route.controllerFor('signup').set "errorMsg", "That email/password combo didn't work.  Please try again"
+
+  login: (route) ->
+    me = @
+    $.ajax
+      url: '/users/sign_in.json'
+      type: "POST"
+      data:
+        "user[email]": route.currentModel.email
+        "user[password]": route.currentModel.password
+      success: (data) ->
+        me.set 'currentUser', data.user
+        route.transitionTo 'home'
+      error: (xhr, textStatus, errorThrown) ->
+        err = eval "(#{xhr.responseText})"
+        route.controllerFor('login').set "errorMsg", "Wrong username or password"
 

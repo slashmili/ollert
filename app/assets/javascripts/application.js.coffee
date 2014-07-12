@@ -13,3 +13,8 @@ window.Ollert = Ember.Application.create
   LOG_TRANSITIONS_INTERNAL: true
   LOG_VIEW_LOOKUPS: true
   rootElement: '#ollert-app'
+
+$(document).ready () ->
+  token = $('meta[name="csrf-token"]').attr('content')
+  $.ajaxPrefilter (options, originalOptions, xhr) ->
+    xhr.setRequestHeader('X-CSRF-Token', token)

@@ -10,3 +10,6 @@ Ollert.Store = DS.Store.extend({
 Ollert.ApplicationAdapter = DS.ActiveModelAdapter.extend({
 
 })
+
+DS.RESTAdapter.reopen
+  namespace: 'api/v1'

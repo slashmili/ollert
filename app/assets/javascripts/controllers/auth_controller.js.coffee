@@ -26,7 +26,7 @@ Ollert.AuthController = Ember.Controller.extend
         "user[password]": route.currentModel.password
       success: (data) ->
         me.set 'currentUser', data.user
-        route.transitionTo 'home'
+        route.transitionTo 'boards'
       error: (xhr, textStatus, errorThrown) ->
         err = eval "(#{xhr.responseText})"
         route.controllerFor('login').set "errorMsg", "Wrong username or password"

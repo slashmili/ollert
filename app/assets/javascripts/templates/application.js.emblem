@@ -9,6 +9,8 @@ nav.navbar.navbar-default
           = link-to "signup" | Sign Up
         li
           = link-to "login" | Login
+        li
+          = link-to "boards" | Boards
 section#main
   = outlet
 

@@ -240,6 +240,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_model_serializers
   bootstrap-sass
   capybara-webkit
   coffee-rails (~> 4.0.0)

@@ -1,0 +1,12 @@
+section.board
+  header = title
+  each list in board_lists
+    section.list
+      header = list.title
+      ul
+        li Understanding the Linux Kernel
+        li Linux Networking Cookbook 1
+        li Linux Networking Cookbook 2
+        li Linux Networking Cookbook 3
+      section.add-card
+        a href="#" Add a card

@@ -33,3 +33,54 @@ section.boards {
     white-space: normal;
   }
 }
+
+section.board {
+    padding-left: 10px;
+    -ms-flex-align: start;
+    -moz-box-align: start;
+    -webkit-box-align: start;
+    align-items: flex-start;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    .list {
+        background: #f0f0f0;
+        border-radius: 3px;
+        max-height: 100%;
+        padding: 4px 3px 3px;
+        margin: 0 5px;
+        width: 260px;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        ul {
+            list-style: none;
+            background-color: #f0f0f0;
+            min-height: 50px;
+            padding: 5px 5px 5px 5px;
+        }
+        li {
+            background-color: #fff;
+            padding: 6px 8px 4px;
+            margin-bottom: 5px;
+            max-width: 300px;
+            min-height: 20px;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+    }
+    header {
+        font-size: 18px;
+        cursor: default;
+        font-weight: 700;
+        line-height: 30px;
+    }
+}

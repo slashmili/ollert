@@ -1,3 +1,5 @@
 Ollert.BoardsRoute = Ember.Route.extend
   model: () ->
-    @store.findAll('board')
+    boards = Ember.ResourceCollection.create
+      type: Ollert.Board
+    boards.fetch()

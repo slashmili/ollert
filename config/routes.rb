@@ -2,10 +2,12 @@ Rails.application.routes.draw do
   devise_for :users
   resources :cards
 
-  resources :lists
 
   root 'dashboard#ember'
-  resources :boards
+  resources :boards do
+    resources :lists
+  end
+
 
   namespace :api do
     namespace :v1 do

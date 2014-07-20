@@ -4,7 +4,12 @@ class ListsController < ApplicationController
   # GET /lists
   # GET /lists.json
   def index
-    @lists = List.all
+    @lists = current_user.boards.find(params[:board_id]).lists
+    respond_to do |format|
+      format.json do
+        render :json => current_user.boards.find(params[:board_id]).lists.to_json(include: :cards)
+      end
+    end
   end
 
   # GET /lists/1

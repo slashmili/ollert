@@ -1,0 +1,8 @@
+each
+  section.list
+    header = title
+    ul
+      each card in cards
+        li = card.title
+    section.add-card
+      a{action "add_card_form"} href="#" Add a card

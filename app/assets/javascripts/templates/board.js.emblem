@@ -1,10 +1,3 @@
 section.board
   header = title
-  each list in lists
-    section.list
-      header = list.title
-      ul
-        each card in list.cards
-          li = card.title
-      section.add-card
-        a href="#" Add a card
+  render "lists" lists

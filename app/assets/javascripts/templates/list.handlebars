@@ -1,0 +1,15 @@
+<section class="list">
+    <header>{{title}}</header>
+    {{render "cards/index_short" cards}}
+    <section class="add-card">
+        {{#if adding_a_card}}
+            <form>
+              {{textarea value=new_card_title}}
+              <button {{action "save_new_card"}} type="button" class="btn btn-primary">Add</button>
+              <a href="" {{action "cancel_card_form"}}><span class="glyphicon glyphicon-remove"></span></a>
+            </form>
+        {{else}}
+            <a href="" {{action "add_card_form"}}>Add a card</a>
+        {{/if}}
+    </section>
+</section>

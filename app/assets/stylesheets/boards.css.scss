@@ -83,4 +83,16 @@ section.board {
         font-weight: 700;
         line-height: 30px;
     }
+    .add-card {
+        textarea {
+          width: 100%;
+          border: none;
+        }
+        padding: 4px 3px 3px;
+        margin: 0 5px;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: flex;
+        flex-direction: column;
+    }
 }

@@ -2,6 +2,11 @@ Rails.application.routes.draw do
   devise_for :users
   resources :cards
 
+  resources :boards
+  resources :lists do
+    resources :cards
+  end
+
 
   root 'dashboard#ember'
   resources :boards do

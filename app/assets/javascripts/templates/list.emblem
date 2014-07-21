@@ -1,0 +1,12 @@
+section.list
+  header = title
+  render "cards/index_short" cards
+  section.add-card
+    if adding_a_card
+      form
+        Ember.TextArea value=new_card_title
+        button{ action 'save_new_card'} class="btn btn-primary" Add
+        a{action 'cancel_card_form'} href=""
+          span class="glyphicon glyphicon-remove"
+    else
+      a{action 'add_card_form'} href="" Add a card

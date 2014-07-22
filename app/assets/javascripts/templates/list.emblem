@@ -1,4 +1,4 @@
-section.list
+section.list data-id="{{unbound id}}"
   header = title
   render "cards/index_short" cards
   section.add-card

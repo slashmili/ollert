@@ -9,5 +9,3 @@ Ollert.CardController = Ember.ObjectController.extend
       @get('model').set('title', @get('title'))
       @set 'editing_title', false
       @get('model').save()
-
-

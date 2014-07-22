@@ -1,4 +1,4 @@
-ul
+ul.sortable
   each
-    li = link-to "card" this
+    li.item data-position="{{unbound position}}" data-id="{{unbound id}}" = link-to "card" this
       = title

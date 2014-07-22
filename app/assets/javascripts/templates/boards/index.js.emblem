@@ -1,5 +1,5 @@
 section.boards
   each
    div.board
-     = title
-     link-to 'board' this | here
+     link-to 'board' this
+       = title

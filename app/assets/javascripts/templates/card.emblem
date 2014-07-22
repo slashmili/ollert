@@ -1,0 +1,16 @@
+section.card
+  section.detail
+    header
+      section.title
+        if editing_title
+          Ember.TextArea value=title
+          button{ action 'save_title'} class="btn btn-primary" Save
+          a{action 'cancel_card_title_form'} href=""
+            span class="glyphicon glyphicon-remove"
+        else
+          p{action 'edit_card_title_form'} = title
+
+      section.close-window
+        a href="javascript:history.back()"
+          span class="glyphicon glyphicon-remove"
+

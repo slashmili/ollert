@@ -1,4 +1,4 @@
 ul
   each
-    li
-      a{action 'blah'} = title
+    li = link-to "card" this
+      = title

@@ -1,3 +1,4 @@
 section.board
   header = title
   render "lists" lists
+= outlet

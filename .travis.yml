@@ -7,4 +7,4 @@ before_install:
 before_script:
     - bundle exec rake db:migrate
 bundler_args: --without development production
-script: 'rake db:test:prepare && rake test'
+script: 'rake db:test:prepare && rake test && bundle exec rake teaspoon'

@@ -12,3 +12,18 @@ section.singup {
     }
   }
 }
+
+section.login {
+  margin: 0 auto;
+  max-width: 540px;
+  form {
+    float: left;
+    margin-right: 40px;
+  }
+
+  form.auth-3rd {
+    button {
+      width: 200px;
+    }
+  }
+}

@@ -1,7 +1,7 @@
 if errorMsg
   = errorMsg
 
-section.singup
+section.login
   form role="form"
     h4 Log In
     div.form-group

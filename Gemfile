@@ -44,6 +44,10 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'pry-rails'
   gem 'pry-byebug'
+  gem 'guard-teaspoon'
+  gem 'teaspoon'
+  gem 'spring-commands-teaspoon'
+  gem "phantomjs"
 end
 
 gem 'devise'

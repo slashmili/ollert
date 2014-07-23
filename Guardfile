@@ -19,3 +19,12 @@ guard :minitest, spring: true do
   watch(%r{^test/test_helper\.rb$}) { 'test' }
 
 end
+
+guard :teaspoon, cmd: 'springteaspoon' do
+  # Implementation files
+  #watch(%r{^app/assets/javascripts/(.+).js}) { |m| "#{m[1]}_spec" }
+  watch(%r{^app/assets/javascripts/(.*)}) { |m| "#{m[1]}_spec" }
+
+  # Specs / Helpers
+  watch(%r{^spec/javascripts/(.*)})
+end

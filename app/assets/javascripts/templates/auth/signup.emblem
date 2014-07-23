@@ -3,18 +3,21 @@ if errorMsg
 
 section.singup
   form role="form"
-    h4 Log In
+    h4 Create an Account
+    div.form-group
+        label for="name" Name
+        = view Em.TextField valueBinding="name" id="name" placeholder="e.g., Sam Rast" class="form-control"
     div.form-group
         label for="email" Email
         = view Em.TextField valueBinding="email" id="email" placeholder="e.g., sam.rast@bar.com" class="form-control"
     div.form-group
         label for="password" Password
         = view Em.TextField type="password" valueBinding="password" id="password" placeholder="e.g, ********" class="form-control"
-    button class="btn btn-default" type="submit" click="login" Log In
+    button class="btn btn-default" type="submit" click="register" Create New Account
     p
-      | #{link-to "signup" | Forget your password?}
+      | Already have an account? #{link-to "auth.login" | Log In}
   form.auth-3rd
-    h4 Or log in with:
+    h4 Or sign up with:
     p
       button class="btn btn-success" type="submit" Google Account
     p

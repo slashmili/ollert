@@ -1,4 +1,4 @@
-Ollert.LoginRoute = Ember.Route.extend
+Ollert.AuthLoginRoute = Ember.Route.extend
   model: -> Ember.Object.create()
   actions:
     login: ->

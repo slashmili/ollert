@@ -5,10 +5,7 @@ nav.navbar.navbar-default
 
     div.collapse.navbar-collapse
       ul.nav.navbar-nav
-        li
-          = link-to "signup" | Sign Up
-        li
-          = link-to "login" | Login
+        render 'auth/header_menu'
         li
           = link-to "boards" | Boards
 section#main

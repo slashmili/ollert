@@ -1,0 +1,4 @@
+li
+  = link-to "auth.signup" | Sign Up
+li
+  = link-to "auth.login" | Login

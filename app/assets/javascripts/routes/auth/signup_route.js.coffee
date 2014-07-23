@@ -1,4 +1,4 @@
-Ollert.SignupRoute = Ember.Route.extend
+Ollert.AuthSignupRoute = Ember.Route.extend
   model: -> Ember.Object.create()
   actions:
     register: ->

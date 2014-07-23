@@ -14,6 +14,9 @@ class CardsController < ApplicationController
       format.json do
         render :json => @card.to_json
       end
+      format.html do
+        @card
+      end
     end
   end
 

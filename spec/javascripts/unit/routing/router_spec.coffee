@@ -7,3 +7,6 @@ test 'root route', () ->
 
 test 'login route', () ->
   routesTo('/auth/login', 'auth.login')
+
+test 'signup route', () ->
+  routesTo('/auth/signup', 'auth.signup')

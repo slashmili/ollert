@@ -1,7 +1,7 @@
 if errorMsg
   = errorMsg
 
-section.singup
+section.signup
   form role="form"
     h4 Create an Account
     div.form-group

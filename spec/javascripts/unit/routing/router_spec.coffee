@@ -3,7 +3,7 @@ module 'Routing specs', () ->
     Ollert.reset()
 
 test 'root route', () ->
-  visit '/'
-  andThen () ->
-    current_route = Ollert.__container__.lookup('controller:application').currentRouteName
-    equal current_route, 'index', 'Expected ******  got: ' + current_route
+  routesTo('/', 'index')
+
+test 'login route', () ->
+  routesTo('/auth/login', 'auth.login')

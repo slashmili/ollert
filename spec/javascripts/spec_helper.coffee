@@ -30,6 +30,7 @@
 # may get better load performance if you require the specific files that are being used in the spec that tests them.
 
 
+#= require support/testing_helpers
 #= require application
 #= require_self
 

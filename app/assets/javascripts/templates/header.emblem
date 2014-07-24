@@ -1,0 +1,17 @@
+nav.navbar.navbar-default
+  div.container-fluid
+    div.navbar-header
+      a.navbar-brand href="#" Ollert
+
+    div.collapse.navbar-collapse
+      ul.nav.navbar-nav
+        if current_user
+          li
+            a id="profile-link" href="" Profile
+        else
+          li
+            = link-to "auth.signup" | Sign Up
+          li
+            = link-to "auth.login" | Login
+        li
+          = link-to "boards" | Boards

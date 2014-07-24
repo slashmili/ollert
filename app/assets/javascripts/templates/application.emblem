@@ -1,13 +1,4 @@
-nav.navbar.navbar-default
-  div.container-fluid
-    div.navbar-header
-      a.navbar-brand href="#" Ollert
-
-    div.collapse.navbar-collapse
-      ul.nav.navbar-nav
-        render 'auth/header_menu'
-        li
-          = link-to "boards" | Boards
+render 'header'
 section#main
   = outlet
 

@@ -13,7 +13,7 @@ section.signup
     div.form-group
         label for="password" Password
         = view Em.TextField type="password" valueBinding="password" id="password" placeholder="e.g, ********" class="form-control"
-    button class="btn btn-default" type="submit" click="register" Create New Account
+    button class="btn btn-default" type="submit" id="signup" click="register" Create New Account
     p
       | Already have an account? #{link-to "auth.login" | Log In}
   form.auth-3rd

@@ -1,6 +1,3 @@
-if errorMsg
-  = errorMsg
-
 section.signup
   form role="form"
     h4 Create an Account
@@ -9,9 +6,11 @@ section.signup
         = view Em.TextField valueBinding="name" id="name" placeholder="e.g., Sam Rast" class="form-control"
     div.form-group
         label for="email" Email
+        p = errors.email
         = view Em.TextField valueBinding="email" id="email" placeholder="e.g., sam.rast@bar.com" class="form-control"
     div.form-group
         label for="password" Password
+        p = errors.password
         = view Em.TextField type="password" valueBinding="password" id="password" placeholder="e.g, ********" class="form-control"
     button class="btn btn-default" type="submit" id="signup" click="register" Create New Account
     p

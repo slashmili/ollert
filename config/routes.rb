@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   devise_for :users
   resources :cards
 
+  get 'users/current_user', to: 'sessions#index'
+
   resources :boards
   resources :lists do
     resources :cards

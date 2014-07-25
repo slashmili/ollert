@@ -15,6 +15,11 @@ window.Ollert = Ember.Application.create
   LOG_TRANSITIONS_INTERNAL: true
   LOG_VIEW_LOOKUPS: true
   rootElement: '#ollert-app'
+  ready: ->
+    $(document).ajaxError (event, request, settings) ->
+      if request.status == 401 && !["/users/current_user.json"].contains(settings.url)
+        controller = Ollert.__container__.lookup('controller:application')
+        controller.transitionToRoute('auth.login')
 
 $(document).ready () ->
   token = $('meta[name="csrf-token"]').attr('content')

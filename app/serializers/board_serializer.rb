@@ -1,5 +1,5 @@
 class BoardSerializer < ActiveModel::Serializer
-  embed :ids, include: true
+  embed :ids
   attributes :id, :title
   has_many :lists
 end

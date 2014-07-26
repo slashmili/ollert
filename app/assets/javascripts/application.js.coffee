@@ -5,7 +5,6 @@
 #= require ember
 #= require ember-data
 #= require bootstrap
-#= require ember-resource.min
 #= require_self
 #= require ollert
 

@@ -1,11 +1,3 @@
-Ollert.Board = Ember.Resource.define
-  url: '/boards',
-  schema: {
-    id:    Number
-    title:  String
-    lists: {
-      type:     Ember.ResourceCollection,
-      itemType: 'Ollert.List',
-      url:      '/boards/%@/lists'
-    }
-  }
+Ollert.Board = DS.Model.extend
+  title: DS.attr()
+  lists: DS.hasMany('list', {async: true})

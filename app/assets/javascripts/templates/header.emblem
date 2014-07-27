@@ -1,17 +1,32 @@
-nav.navbar.navbar-default
-  div.container-fluid
-    div.navbar-header
-      a.navbar-brand href="#" Ollert
+section.header
+  nav.navbar.navbar-default
+    div.container-fluid
+      div.navbar-header
+        a.navbar-brand href="#" Ollert
 
-    div.collapse.navbar-collapse
-      ul.nav.navbar-nav
-        if current_user
+      div.collapse.navbar-collapse
+        ul.nav.navbar-nav
+          if current_user
+            li
+              a id="profile-link" href="" Profile
+            li
+              a{action 'addBoardForm'} id="add_board_form" href="" Add new board
+              if adding_board
+                div id="newBoardPopup"
+                  div class="panel panel-default"
+                    div.panel-heading
+                      h3.panel-title Add
+                  div.panel-body
+                    form id="new_board_form"
+                      div.field
+                        label name
+                        Ember.TextField id="new_board_name" value=title
+                      div.action
+                        button{action 'createBoard'} class="btn btn-success" Add
+          else
+            li
+              = link-to "auth.signup" | Sign Up
+            li
+              = link-to "auth.login" | Login
           li
-            a id="profile-link" href="" Profile
-        else
-          li
-            = link-to "auth.signup" | Sign Up
-          li
-            = link-to "auth.login" | Login
-        li
-          = link-to "boards" | Boards
+            = link-to "boards" | Boards

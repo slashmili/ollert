@@ -26,4 +26,14 @@ describe Api::V1::CardsController do
       post :create, card: { title: 'Lets do it', list_id: list_done.id }
     }.must_raise ActiveRecord::RecordNotFound
   end
+
+  it "updates card" do
+    board.user = @user
+    board.save
+    card = create(:card, list_id: list_done.id)
+    put :update, id: card, card: { list_id: list_done.id, position: 1000, title: 'updates card' }
+    assigns(:card).title.must_equal 'updates card'
+    assigns(:card).position.must_equal 1000
+  end
+
 end

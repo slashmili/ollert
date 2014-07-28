@@ -13,4 +13,13 @@ section.card
       section.close-window
         a href="javascript:history.back()"
           span class="glyphicon glyphicon-remove"
+    section.description
+      if editing_description
+        Ember.TextArea value=description
+        button{ action 'save_description'} class="btn btn-primary" Save
+        a{action 'cancel_description_form'} href=""
+          span class="glyphicon glyphicon-remove"
+      else
+        p{action 'edit_description_form'} = description
+
 

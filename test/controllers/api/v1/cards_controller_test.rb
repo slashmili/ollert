@@ -16,9 +16,10 @@ describe Api::V1::CardsController do
   it "creats new" do
     board.user = @user
     board.save
-    post :create, card: { title: 'Lets do it', list_id: list_done.id }
+    post :create, card: { title: 'Lets do it', list_id: list_done.id, description: 'description' }
     assigns(:card).title.must_equal 'Lets do it'
     assigns(:card).id.wont_equal nil, "Card shoud be saved"
+    assigns(:card).description.must_equal 'description'
   end
 
   it "shouldnt be saved because the user dosnt own the board" do

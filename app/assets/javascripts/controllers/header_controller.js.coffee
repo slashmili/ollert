@@ -14,5 +14,6 @@ Ollert.HeaderController = Ember.Controller.extend
       board.save()
       .then () ->
         self.toggleProperty 'adding_board'
+        self.set 'title', ''
         self.transitionToRoute 'board', board
 

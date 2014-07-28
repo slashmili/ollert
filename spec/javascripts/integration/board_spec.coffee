@@ -1,16 +1,19 @@
-module 'Auth integration',
+module 'Board integration',
   setup: () ->
+    turnOnRESTAdapter()
+    fakehr.start()
     Ollert.reset()
-    resetFixtures()
-    #fakehr.start()
     Ollert.__container__.lookup('controller:application').set('current_user', {id: 10, email: 'zack@bar.com'})
   teardown: () ->
+    fakehr.stop()
+    resetFixtures()
     Ollert.reset()
-    #fakehr.stop()
 
-test 'New Bord', () ->
-  visit '/'
-  click('section.header #add_board_form')#.httpRespond('get', '/users.json', current_user)
-  fillIn 'section.header #new_board_name', "Board Foo"
-  click('section.header button')#.httpRespond('post', '/api/v1/boards', {"board":{"id":8,"title":"Foo 3","list_ids":[24,25,26]}})
-  ok 1
+test 'load board index', ()->
+  boards = {"boards":[{"id":6,"title":"Foo 2","list_ids":[18,19,20]},{"id":9,"title":"New board and go to","list_ids":[27,28,29]}]}
+
+  visitAndRespond '/boards', 'get' , '/api/v1/boards', boards
+  andThen () ->
+    board = /Board Foo/.test(find 'section.boards .board')
+    boards = find('section.boards .board').length
+    equal boards, 2, 'Expect to find 2 boards'

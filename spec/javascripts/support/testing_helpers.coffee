@@ -12,3 +12,10 @@ root.currentRoute = (route_name) ->
 root.resetFixtures = () ->
   Ollert.ApplicationAdapter = DS.FixtureAdapter
   Ollert.Board.FIXTURES = [{id: 1, title: 'Board 01'}, {id: 2, title: 'Board 02'}]
+
+root.turnOnRESTAdapter = () ->
+  Ollert.ApplicationAdapter = DS.RESTAdapter
+  Ollert.Store = DS.Store.extend
+    adapter: '-active-model'
+
+  DS.RESTAdapter.reopen {namespace: "api/v1"}

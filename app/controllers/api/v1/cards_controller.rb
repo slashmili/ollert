@@ -1,7 +1,7 @@
 class Api::V1::CardsController < ApplicationController
   respond_to :json
   before_action :has_access?, only: [:create]
-  before_action :set_card, only: [:update]
+  before_action :set_card, only: [:update, :show]
 
   def create
     @card = Card.new(card_params)
@@ -21,6 +21,9 @@ class Api::V1::CardsController < ApplicationController
     end
   end
 
+  def show
+    render json: @card, status: :ok, location: @card
+  end
 
   private
   def set_card

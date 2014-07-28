@@ -36,4 +36,13 @@ describe Api::V1::CardsController do
     assigns(:card).position.must_equal 1000
   end
 
+  it "shows card" do
+    board.user = @user
+    board.save
+    card = create(:card, list_id: list_done.id)
+    get :show, id: card
+    assert_response :success
+  end
+
+
 end

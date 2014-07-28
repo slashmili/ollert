@@ -8,13 +8,12 @@ Ollert.ListController = Ember.ObjectController.extend
     save_new_card: () ->
       self = @
 
-      card = Ollert.Card.create
+      card = @store.createRecord 'card',
         title: @get('new_card_title')
-        list_id: @get('model').get('id')
+        list: @get('model')
 
-      card.save().done(() ->
+      card.save().then () ->
         self.set('adding_a_card', false)
         self.set('new_card_title', '')
         self.get('model').get('cards').pushObject(card)
-      )
   }

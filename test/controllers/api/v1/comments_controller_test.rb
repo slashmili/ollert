@@ -25,4 +25,12 @@ describe Api::V1::CommentsController do
     get :show, id: comment
     assert_response :success
   end
+
+  it 'gets index' do
+    comment = create(:comment, card_id: card.id, user_id: user.id)
+    get :index, ids: [comment.id]
+    assigns(:comments).length.must_equal 1
+    assert_response :success
+  end
+
 end

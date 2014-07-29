@@ -21,5 +21,7 @@ section.card
           span class="glyphicon glyphicon-remove"
       else
         p{action 'edit_description_form'} = description
+    section.comments
+      render 'cards/comments' comments
 
 

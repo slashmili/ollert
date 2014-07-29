@@ -6,4 +6,5 @@ class User < ActiveRecord::Base
   has_many :boards
   has_many :lists, through: :boards
   has_many :cards, through: :lists
+  has_many :comments, through: :cards
 end

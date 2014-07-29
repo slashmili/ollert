@@ -21,6 +21,7 @@ Rails.application.routes.draw do
       resources :boards
       resources :lists
       resources :cards
+      resources :comments
     end
   end
 

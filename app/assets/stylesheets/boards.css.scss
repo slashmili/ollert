@@ -87,6 +87,7 @@ section.board {
         textarea {
           width: 100%;
           border: none;
+          resize: vertical;
         }
         padding: 4px 3px 3px;
         margin: 0 5px;
@@ -108,14 +109,19 @@ section.card {
   height:100%;
   z-index: 1000;
   background-color: rgba(0,0,0,.6);
-  textarea {
+  .title textarea {
+    resize: vertical;
     width: 100%;
-    border: none;
     font-weight: bold;
     font-size: 18px;
   }
 
   .detail {
+    textarea {
+      resize: vertical;
+      width: 100%;
+      min-height:156px;
+    }
     header {
       cursor: pointer;
       font-weight: bold;

@@ -31,9 +31,6 @@
 
 
 #= require application
-#= require support/fake_xml_http_request
-#= require support/httpRespond-1.1
-#= require support/fakehr
 #= require support/testing_helpers
 #= require_self
 

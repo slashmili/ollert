@@ -126,6 +126,11 @@ section.card {
       font-size: 14px;
   }
 
+  textarea {
+      resize: vertical;
+      width: 100%;
+  }
+
 
   font-size: 14px;
   position: absolute;
@@ -136,18 +141,12 @@ section.card {
   z-index: 1000;
   background-color: rgba(0,0,0,.6);
   .title textarea {
-    resize: vertical;
-    width: 100%;
     font-weight: bold;
     font-size: 18px;
+    min-height: 50px;
   }
 
   .detail {
-    textarea {
-      resize: vertical;
-      width: 100%;
-      min-height:156px;
-    }
     header {
       cursor: pointer;
       font-weight: bold;
@@ -162,6 +161,9 @@ section.card {
   }
 
   .description {
+      textarea {
+          min-height:156px;
+      }
       a.edit-description {
           text-decoration: none;
           color: inherit;

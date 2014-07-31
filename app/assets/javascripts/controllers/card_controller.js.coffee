@@ -1,6 +1,8 @@
 Ollert.CardController = Ember.ObjectController.extend
   editing_title: false
   editing_description: false
+  adding_comment: false
+  new_comment: ''
   actions:
     cancel_card_title_form: () ->
       @set 'editing_title', false
@@ -22,3 +24,16 @@ Ollert.CardController = Ember.ObjectController.extend
       @toggleProperty 'editing_description'
       @get('model').save()
 
+    add_comment_form: () ->
+      @toggleProperty 'adding_comment'
+    add_comment: () ->
+      self = @
+      console.log @toString()
+      comment = @get('store').createRecord 'comment',
+        text: @get('new_comment')
+        card: @get('model')
+
+      comment.save().then () ->
+        self.toggleProperty 'adding_comment'
+        self.set 'new_comment', ''
+        self.get('model').get('comments').pushObject(comment)

@@ -31,6 +31,7 @@
 
 
 #= require application
+#= require support/ember-qunit
 #= require support/testing_helpers
 #= require_self
 
@@ -38,3 +39,5 @@ document.write('<div id="ember-testing-container"><div id="ember-testing"></div>
 Ollert.rootElement='#ember-testing'
 Ollert.setupForTesting()
 Ollert.injectTestHelpers()
+emq.globalize()
+setResolver(Ember.DefaultResolver.create({ namespace: Ollert }))

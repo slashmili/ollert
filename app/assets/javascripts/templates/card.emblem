@@ -20,7 +20,8 @@ section.card
         a{action 'cancel_description_form'} href=""
           span class="glyphicon glyphicon-remove"
       else
-        p{action 'edit_description_form'} = description
+        a{action 'edit_description_form'}
+          p #{markdown description}
     section.comments
       render 'cards/comments' comments
 

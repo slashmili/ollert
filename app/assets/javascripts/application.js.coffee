@@ -5,6 +5,7 @@
 #= require ember
 #= require ember-data
 #= require bootstrap
+#= require showdown
 #= require_self
 #= require ollert
 

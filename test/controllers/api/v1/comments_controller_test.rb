@@ -14,7 +14,7 @@ describe Api::V1::CommentsController do
   end
 
   it "creats new" do
-    post :create, comment: { text: 'This is my text', card_id: card.id, user_id: user.id}
+    post :create, comment: { text: 'This is my text', card_id: card.id}
     assigns(:comment).text.must_equal 'This is my text'
     assigns(:comment).user.must_equal user
     assigns(:comment).card.must_equal card

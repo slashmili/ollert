@@ -1,0 +1,4 @@
+section.comment
+  .text = text
+  .date 16 minutes ago
+  .actions Edit - Delete

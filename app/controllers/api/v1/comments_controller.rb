@@ -8,6 +8,7 @@ class Api::V1::CommentsController < ApplicationController
 
   def create
     @comment = Comment.new(comment_params)
+    @comment.user = current_user
 
     if @comment.save
       render json: @comment

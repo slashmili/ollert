@@ -23,6 +23,9 @@ section.card
         a{action 'edit_description_form'} class="edit-description"
           p #{markdown description}
     section.comments
-      render 'cards/comments' comments
+      section.new
+        Ember.TextArea value=new_comment
+        button{ action 'add_comment'} class="btn btn-primary" Comment
+      render 'card/comments' comments
 
 

@@ -1,0 +1,2 @@
+each
+  render 'card/comment' this

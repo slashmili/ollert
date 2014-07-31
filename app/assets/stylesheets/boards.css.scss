@@ -160,4 +160,13 @@ section.card {
     padding:15px;
     border-radius: 3px;
   }
+
+  .description {
+      a.edit-description {
+          text-decoration: none;
+          color: inherit;
+          cursor: pointer;
+      }
+  }
+
 }

@@ -173,4 +173,24 @@ section.card {
       }
   }
 
+  .comment {
+    border-bottom: 1px solid #dcdcdc;
+    padding: 8px 0 8px 38px;
+    .date {
+      color: #939393;
+      float: left;
+      padding: 0 4px 0 4px;
+      font-size: 12px;
+    }
+    .actions {
+      color: #939393;
+      font-size: 12px;
+      a {
+        text-decoration: underline;
+        cursor: pointer;
+        color: inherit;
+      }
+    }
+  }
+
 }

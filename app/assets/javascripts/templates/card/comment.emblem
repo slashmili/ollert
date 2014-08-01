@@ -1,4 +1,7 @@
 section.comment
   .text = text
   .date #{moment created_at}
-  .actions Edit - Delete
+  .actions
+    a{action 'edit_comment_form'} Edit
+    span  - 
+    a{action 'delete_comment'} Delete

@@ -1,4 +1,4 @@
 section.comment
   .text = text
-  .date 16 minutes ago
+  .date #{moment created_at}
   .actions Edit - Delete

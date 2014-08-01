@@ -1,5 +1,12 @@
 section.comment
-  .text = text
+  .text
+    if editing_comment
+        Ember.TextArea value=text
+        button{ action 'save_text'} class="btn btn-primary" Save
+        a{action 'cancel_comment_form'} href=""
+          span class="glyphicon glyphicon-remove"
+    else
+      = text
   .date #{moment created_at}
   .actions
     a{action 'edit_comment_form'} Edit

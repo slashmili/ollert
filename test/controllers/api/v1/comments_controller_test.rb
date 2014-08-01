@@ -33,4 +33,11 @@ describe Api::V1::CommentsController do
     assert_response :success
   end
 
+  it "updates comments" do
+    comment = create(:comment, card_id: card.id, user_id: user.id)
+    put :update, id: comment, comment: { text: 'updates comment' }
+    assigns(:comment).text.must_equal 'updates comment'
+  end
+
+
 end

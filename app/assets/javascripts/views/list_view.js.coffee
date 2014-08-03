@@ -4,8 +4,8 @@ Ollert.ListView = Ember.View.extend
     @$(".cards-sortable").sortable
       connectWith: ".cards-sortable"
       update: (event, ui) ->
-        prev_pos = ui.item.prev().data('position') or 0.0
-        next_pos = ui.item.next().data('position') or parseFloat(prev_pos) + 1.0
+        prev_pos = ui.item.prevAll('li:first').data('position') or 0.0
+        next_pos = ui.item.nextAll('li:first').data('position') or parseFloat(prev_pos) + 1.0
         new_pos = (parseFloat next_pos + parseFloat prev_pos)/2
 
         card_id = ui.item.data('id')

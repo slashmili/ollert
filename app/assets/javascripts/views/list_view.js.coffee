@@ -1,8 +1,8 @@
 Ollert.ListView = Ember.View.extend
   didInsertElement: () ->
     self = @
-    @$(".sortable").sortable
-      connectWith: ".sortable"
+    @$(".cards-sortable").sortable
+      connectWith: ".cards-sortable"
       update: (event, ui) ->
         prev_pos = ui.item.prev().data('position') or 0.0
         next_pos = ui.item.next().data('position') or parseFloat(prev_pos) + 1.0

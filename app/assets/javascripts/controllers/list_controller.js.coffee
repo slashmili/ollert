@@ -1,5 +1,9 @@
 Ollert.ListController = Ember.ObjectController.extend
   adding_a_card: false
+  updateCardSortOrder: (card, position) ->
+    card.set 'position', position
+    card.set 'list', @get('model')
+    card.save()
   actions: {
     cancel_card_form: () ->
       @set 'adding_a_card', false

@@ -1,5 +1,5 @@
 section.board
   header = title
-  section.lists
+  section.lists class="lists-sortable"
     render "lists" lists
 = outlet

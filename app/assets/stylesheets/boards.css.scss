@@ -33,6 +33,11 @@ section.boards {
     white-space: normal;
   }
 }
+.lists-sortable-placeholder {
+  border: 1px dotted black;
+  margin: 0 1em 1em 0;
+  height: 50px;
+}
 section.board {
     padding-left: 10px;
     .lists {
@@ -69,7 +74,10 @@ section.board {
                 cursor: pointer;
                 border-radius: 3px;
             }
-        }
+            header {
+              cursor: pointer;
+            }
+          }
     }
     header {
         font-size: 18px;

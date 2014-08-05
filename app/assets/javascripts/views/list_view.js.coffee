@@ -1,6 +1,10 @@
 Ollert.ListView = Ember.View.extend
+  tagName: 'span'
   didInsertElement: () ->
     self = @
+    $('.lists-sortable').sortable
+      connectWith: ".lists-sortable"
+      handle: ".list header"
     @$(".cards-sortable").sortable
       connectWith: ".cards-sortable"
       update: (event, ui) ->

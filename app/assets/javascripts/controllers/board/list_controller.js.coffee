@@ -1,4 +1,4 @@
-Ollert.ListController = Ember.ObjectController.extend
+Ollert.BoardListController = Ember.ObjectController.extend
   adding_a_card: false
   updateCardSortOrder: (card, position) ->
     card.set 'position', position

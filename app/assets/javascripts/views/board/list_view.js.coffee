@@ -1,4 +1,4 @@
-Ollert.ListView = Ember.View.extend
+Ollert.BoardListView = Ember.View.extend
   tagName: 'span'
   didInsertElement: () ->
     self = @

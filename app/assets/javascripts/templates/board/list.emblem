@@ -1,6 +1,6 @@
 section.list data-id="{{unbound id}}"
   header = title
-  render "cards/index_short" cards
+  render "board/cards_short" cards
   section.add-card
     if adding_a_card
       form

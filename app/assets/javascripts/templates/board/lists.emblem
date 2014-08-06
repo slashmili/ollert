@@ -1,2 +1,5 @@
 each
   render 'board/list' this
+section.new-list
+  header
+    a{action 'add_list_form'} Add a list

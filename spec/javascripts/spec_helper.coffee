@@ -32,6 +32,8 @@
 
 #= require application
 #= require support/ember-qunit
+#= require support/sinon-1.10.3
+#= require support/sinon-qunit
 #= require support/testing_helpers
 #= require_self
 

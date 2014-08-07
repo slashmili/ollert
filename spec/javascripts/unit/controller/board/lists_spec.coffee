@@ -17,7 +17,7 @@ test 'calling the action add_list_form', ()->
 test 'calling add_list', () ->
 
   save = sinon.stub()
-  save.returns({then: ()-> 1})
+  save.returns({then: (f)-> f()})
   store =
     createRecord: () ->
       {
@@ -30,5 +30,5 @@ test 'calling add_list', () ->
     equal ctrl.get('new_list_title'), ''
     ctrl.set 'new_list_title', 'Wish list'
     ctrl.send 'add_list'
-    #equal ctrl.get('new_list_title'), '', 'The title should be cleared'
+    equal ctrl.get('new_list_title'), '', 'The title should be cleared'
 

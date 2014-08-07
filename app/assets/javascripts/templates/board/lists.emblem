@@ -2,4 +2,11 @@ each
   render 'board/list' this
 section.new-list
   header
-    a{action 'add_list_form'} Add a list
+    if adding_list
+      form
+        Ember.TextField value=new_list_title
+        button{ action 'add_list'} class="btn btn-primary" Add
+        a{action 'cancel_add_list_form'} href=""
+          span class="glyphicon glyphicon-remove"
+    else
+      a{action 'add_list_form'} Add a list

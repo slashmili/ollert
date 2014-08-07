@@ -9,5 +9,6 @@ module 'Board/List',
 test 'Add a new list', () ->
   visit '/boards/1'
   andThen () ->
-    new_list_form = find('.new-list.input')
-    equal new_list_form, 1, 'Expect to see the input box to enter list title'
+    click('.new-list a')
+    new_list_form = find('.new-list input')
+    equal new_list_form.length, 1, 'Expect to see the input box to enter list title'

@@ -1,5 +1,6 @@
 Ollert.BoardListView = Ember.View.extend
-  tagName: 'span'
+  tagName: 'section'
+  classNames: 'list'
   didInsertElement: () ->
     self = @
     $('.lists-sortable').sortable

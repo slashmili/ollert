@@ -1,8 +1,23 @@
 class Api::V1::ListsController < ApplicationController
   respond_to :json
+  before_action :set_list, only: [:update]
 
   def index
     respond_with List.find(params[:ids])
+  end
+
+  def update
+    update_params = list_params()
+    #binding.pry
+    if @after_list
+      update_params[:position] = position(@after_list)
+    end
+
+    if @list.update(update_params)
+        render json: @list, status: :ok
+    else
+        render json: @list, status: :unprocessable_entity
+    end
   end
 
   def create
@@ -17,6 +32,10 @@ class Api::V1::ListsController < ApplicationController
   end
 
   private
+
+  def set_list
+    @list = current_user.lists.find(params[:id])
+  end
 
   def position(after_list)
     unless after_list

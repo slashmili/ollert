@@ -1,4 +1,5 @@
-header = title
+header data-id="{{unbound id}}"
+  = title
 render "board/cards_short" cards
 section.add-card
   if adding_a_card

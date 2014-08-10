@@ -20,8 +20,11 @@ section.card
         a{action 'cancel_description_form'} href=""
           span class="glyphicon glyphicon-remove"
       else
-        a{action 'edit_description_form'} class="edit-description"
-          p #{markdown description}
+        if description
+          a{action 'edit_description_form'} class="edit-description"
+            p #{markdown description}
+        else
+          a{action 'edit_description_form'} class="edit-description" href="#" Description
     section.comments
       section.new
         Ember.TextArea value=new_comment

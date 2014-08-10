@@ -6,6 +6,10 @@ class Board < ActiveRecord::Base
   after_create :create_default_list
 
   def create_default_list
-    ['Todo', 'Doing', 'Done'].each{|title| lists.create(title: title) }
+    position = 0.0
+    ['Todo', 'Doing', 'Done'].each do |title|
+      position = (position + 1.0)/2
+      lists.create(title: title, position: position)
+    end
   end
 end

@@ -7,6 +7,7 @@ class Api::V1::ListsController < ApplicationController
   end
 
   def update
+    params[:list][:board_id] ||= @list.board_id
     update_params = list_params()
     update_params[:position] = position(@after_list)
 

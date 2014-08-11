@@ -11,6 +11,7 @@ Ollert.BoardListsController = Ember.ArrayController.extend
       list = @get('store').createRecord 'list',
         title: @get('new_list_title')
         board: board
+        before: 0
 
       self = @
       list.save().then (list) ->

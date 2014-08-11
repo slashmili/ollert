@@ -8,10 +8,7 @@ class Api::V1::ListsController < ApplicationController
 
   def update
     update_params = list_params()
-    #binding.pry
-    if @after_list
-      update_params[:position] = position(@after_list)
-    end
+    update_params[:position] = position(@after_list)
 
     if @list.update(update_params)
         render json: @list, status: :ok
@@ -39,7 +36,8 @@ class Api::V1::ListsController < ApplicationController
 
   def position(after_list)
     unless after_list
-      after_list = current_user.boards.find(list_params[:board_id]).lists.first
+      last_board = List.order(position: :asc).where(board_id: list_params[:board_id]).last
+      return (last_board.position + 1.0 )/2
     end
     before_list = List.order(position: :asc).where(board_id: list_params[:board_id]).where('position < ?', after_list.position).last
     before_position = 0.0
@@ -52,7 +50,7 @@ class Api::V1::ListsController < ApplicationController
   def list_params
     params.require(:list)
     if after_list_id = params[:list].delete(:before)
-      @after_list = List.find(after_list_id)
+      @after_list = List.find_by_id(after_list_id)
     end
     params.require(:list).permit(:ids, :title, :board_id, :position, :before)
   end

@@ -43,8 +43,8 @@ describe Api::V1::ListsController do
   it "creates new one at the end of the list" do
     board.user = @user
     board.save
-    post :create, list: {title: 'QA', board_id: board.id}
-    board.lists.order(position: :asc).first.must_equal assigns(:list)
+    post :create, list: {title: 'QA', board_id: board.id, before: 0}
+    board.lists.order(position: :asc).last.must_equal assigns(:list)
   end
 
   it "moves todo list to the middle the list" do
@@ -56,11 +56,10 @@ describe Api::V1::ListsController do
   end
 
   it "moves todo list to the end of the list" do
-    skip "It won't work for now!"
     board.user = @user
     board.save
     todo_list = board.lists.first
-    put :update, id: todo_list, list: { board_id: board.id }
+    put :update, id: todo_list, list: { board_id: board.id, before: 0 }
     board.lists.order(position: :asc).last.must_equal todo_list
   end
 

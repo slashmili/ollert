@@ -51,7 +51,7 @@ group :development, :test do
 end
 
 gem 'devise'
-gem 'pg', group: :production
+gem 'pg'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

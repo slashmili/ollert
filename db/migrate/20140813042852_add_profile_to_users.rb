@@ -1,4 +1,4 @@
-class AddProfiletoUsers < ActiveRecord::Migration
+class AddProfileToUsers < ActiveRecord::Migration
   def change
     add_column :users, :username, :string, null: false
     add_column :users, :initials, :string, null: false

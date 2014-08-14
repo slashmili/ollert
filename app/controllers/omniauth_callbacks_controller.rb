@@ -8,7 +8,6 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     else
       user.save
       sign_in_and_redirect user
-      redirect_to root_path
     end
   end
 end

@@ -17,7 +17,7 @@ test 'calling the action add_list_form', ()->
 test 'calling add_list', () ->
 
   save = sinon.stub()
-  save.returns({then: (f)-> f()})
+  save.returns({then: (f)-> 1})
   store =
     createRecord: () ->
       {

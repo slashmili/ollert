@@ -13,9 +13,9 @@ Ollert.BoardListsController = Ember.ArrayController.extend
         board: board
         before: 0
 
+      @set 'new_list_title', ''
       self = @
       list.save().then (list) ->
-        self.set 'new_list_title', ''
         self.toggleProperty 'adding_list'
         board.get('lists').pushObject(list)
   }

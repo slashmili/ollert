@@ -1,9 +1,14 @@
 class Api::V1::BoardsController < ApplicationController
   respond_to :json
   before_action :set_board, only: [:show]
+  skip_before_filter :authenticate_user!, only: [:index, :show]
 
   def index
-    respond_with current_user.boards
+    if current_user
+      respond_with current_user.boards
+    else
+      respond_with boards: []
+    end
   end
 
   def create
@@ -25,7 +30,11 @@ class Api::V1::BoardsController < ApplicationController
   private
 
   def set_board
-    @board = Board.accessible(current_user).find(params[:id])
+    if current_user
+      @board = Board.accessible(current_user).find(params[:id])
+    else
+      @board = Board.where(public: true).find(params[:id])
+    end
   end
 
   def board_params

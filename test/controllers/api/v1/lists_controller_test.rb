@@ -9,10 +9,10 @@ describe Api::V1::ListsController do
 
   before do
     @user = create(:user)
-    sign_in @user
   end
 
   it "creates new" do
+    sign_in @user
     board.user = @user
     board.save
     post :create, list: {title: 'Wish list', board_id: board.id, position: 3}
@@ -22,6 +22,7 @@ describe Api::V1::ListsController do
   end
 
   it "creates new one in after doing list" do
+    sign_in @user
     board.user = @user
     board.save
     done_list = board.lists.last
@@ -32,6 +33,7 @@ describe Api::V1::ListsController do
 
 
   it "creates new one at top of the list" do
+    sign_in @user
     board.user = @user
     board.save
     todo_list = board.lists.first
@@ -41,6 +43,7 @@ describe Api::V1::ListsController do
   end
 
   it "creates new one at the end of the list" do
+    sign_in @user
     board.user = @user
     board.save
     post :create, list: {title: 'QA', board_id: board.id, before: 0}
@@ -48,6 +51,7 @@ describe Api::V1::ListsController do
   end
 
   it "moves todo list to the middle the list" do
+    sign_in @user
     board.user = @user
     board.save
     todo_list = board.lists.first
@@ -56,11 +60,31 @@ describe Api::V1::ListsController do
   end
 
   it "moves todo list to the end of the list" do
+    sign_in @user
     board.user = @user
     board.save
     todo_list = board.lists.first
     put :update, id: todo_list, list: { board_id: board.id, before: 0 }
     board.lists.order(position: :asc).last.must_equal todo_list
   end
+
+  it "should be able to access to a public board's lists" do
+    user_foo = create(:user)
+    board_foo = create(:board, user_id: user_foo.id, public: true)
+
+    get :index, format: :json, ids: [board_foo.lists.first.id]
+    response.status.must_equal 200
+    assigns(:lists).length.must_equal 1
+  end
+
+  it "shouldn't show the private boards to other users" do
+    user_foo = create(:user)
+    board_foo = create(:board, user_id: user_foo.id, public: false)
+    get :index, format: :json, ids: [board_foo.lists.first.id]
+    response.status.must_equal 200
+    assigns(:lists).length.must_equal 0
+  end
+
+
 
 end

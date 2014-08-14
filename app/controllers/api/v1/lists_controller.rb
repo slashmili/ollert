@@ -1,9 +1,18 @@
 class Api::V1::ListsController < ApplicationController
   respond_to :json
   before_action :set_list, only: [:update]
+  skip_before_filter :authenticate_user!, only: [:index]
 
   def index
-    respond_with List.find(params[:ids])
+    if current_user
+      @lists = List.joins(:board).where(params[:ids]).where("boards.public = ?", false).where("boards.user_id = ?", current_user.id)
+      unless @lists.empty
+        @lists = List.joins(:board).where(params[:ids]).where("boards.public = ?", true)
+      end
+    else
+      @lists = List.joins(:board).where('boards.public = ?', true).where(id: params[:ids])
+    end
+    respond_with @lists
   end
 
   def update

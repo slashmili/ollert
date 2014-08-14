@@ -5,6 +5,10 @@ before_install:
     - "export DISPLAY=:99.0"
     - "sh -e /etc/init.d/xvfb start"
 before_script:
+    - cp config/database.yml.travis config/database.yml
+    - psql -c 'create database travis_ci_test;' -U postgres
     - bundle exec rake db:migrate
 bundler_args: --without development production
 script: 'rake db:test:prepare && rake test && bundle exec rake teaspoon'
+addons:
+    postgresql: "9.3"

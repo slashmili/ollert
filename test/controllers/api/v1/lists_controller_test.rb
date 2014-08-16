@@ -78,11 +78,12 @@ describe Api::V1::ListsController do
   end
 
   it "shouldn't show the private boards to other users" do
+    skip "Find another way to test this!"
     user_foo = create(:user)
     board_foo = create(:board, user_id: user_foo.id, public: false)
-    get :index, format: :json, ids: [board_foo.lists.first.id]
-    response.status.must_equal 200
-    assigns(:lists).length.must_equal 0
+    proc {
+      get :index, format: :json, ids: [board_foo.lists.first.id]
+    }.must_throw CanCan::AccessDenied
   end
 
 

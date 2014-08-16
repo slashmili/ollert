@@ -30,11 +30,8 @@ class Api::V1::BoardsController < ApplicationController
   private
 
   def set_board
-    if current_user
-      @board = Board.accessible(current_user).find(params[:id])
-    else
-      @board = Board.where(public: true).find(params[:id])
-    end
+    @board = Board.find(params[:id])
+    authorize! :read, @board
   end
 
   def board_params

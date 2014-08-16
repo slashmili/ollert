@@ -4,15 +4,11 @@ class Api::V1::ListsController < ApplicationController
   skip_before_filter :authenticate_user!, only: [:index]
 
   def index
-    if current_user
-      @lists = List.joins(:board).where(id: params[:ids]).where("boards.user_id = ?", current_user.id)
-      if @lists.length == 0
-        @lists = List.joins(:board).where(id: params[:ids]).where("boards.public = ?", true)
-      end
-    else
-      @lists = List.joins(:board).where('boards.public = ?', true).where(id: params[:ids])
-    end
+    @lists = List.joins(:board).where(id: params[:ids])
     respond_with @lists
+    @lists.each do |list|
+      authorize! :read, list
+    end
   end
 
   def update

@@ -51,6 +51,7 @@ group :development, :test do
 end
 
 gem 'devise'
+gem 'cancan'
 gem 'pg'
 gem 'omniauth-google-oauth2'
 

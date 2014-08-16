@@ -12,6 +12,7 @@ class Api::V1::ListsController < ApplicationController
   end
 
   def update
+    authorize! :edit, @list
     params[:list][:board_id] ||= @list.board_id
     update_params = list_params()
     update_params[:position] = position(@after_list)
@@ -37,7 +38,7 @@ class Api::V1::ListsController < ApplicationController
   private
 
   def set_list
-    @list = current_user.lists.find(params[:id])
+    @list = List.joins(:board).find(params[:id])
   end
 
   def position(after_list)

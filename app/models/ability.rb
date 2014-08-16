@@ -11,5 +11,9 @@ class Ability
     can :read, List do |list|
       list.board.public? || list.board.user == user
     end
+
+    can :edit, List do |list|
+      list.board.user == user
+    end
   end
 end

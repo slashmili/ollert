@@ -15,10 +15,7 @@ describe Board do
   end
 
   it "must assign the admin on creating" do
-    user = create(:user)
     board = create(:board, user_id: user.id)
-
-    user.board_accesses.find(board.id).roles.must_equal %w[owner admin]
-
+    user.board_accesses.where(board: board).first.roles.must_equal %w[owner admin]
   end
 end

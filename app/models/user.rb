@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable
+  has_many :board_accesses
   has_many :boards
   has_many :lists, through: :boards
   has_many :cards, through: :lists

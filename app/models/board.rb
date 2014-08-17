@@ -1,14 +1,15 @@
 class Board < ActiveRecord::Base
   validates :title, uniqueness: true
   has_many :lists
-  belongs_to :user
+  belongs_to :user #creator
   has_many :board_accesses
+  has_many :users, through: :board_accesses
   after_create :assign_admin
   after_create :create_default_list
   scope :accessible, lambda { |u| where('public = ? or user_id = ?', true, u.id) }
 
-  def permission
-    #board_accesses.roles
+  def permission(user)
+    board_accesses.where(user: user, board: self).first.roles
   end
 
   def assign_admin

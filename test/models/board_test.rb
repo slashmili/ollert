@@ -21,12 +21,11 @@ describe Board do
 
   it "must be able to assing a board to another user" do
     board = create(:board, user_id: user.id)
-    foo_user = create(:user)
+    new_member = create(:user)
 
-    board.board_accesses.create(board: board, user: foo_user, roles: %w[normal])
+    board.board_accesses.create(board: board, user: new_member, roles: %i[normal])
 
-    foo_user.boards.first.must_equal board
-    foo_user.boards.first.permission.must_equal %i[owner admin]
-
+    new_member.boards.first.must_equal board
+    new_member.boards.first.permission(new_member).must_equal %i[normal]
   end
 end

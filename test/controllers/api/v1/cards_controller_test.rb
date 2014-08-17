@@ -3,13 +3,14 @@ require "test_helper"
 describe Api::V1::CardsController do
   include Devise::TestHelpers
 
-  let(:board) { create(:board) }
+  let(:user) { create(:user) }
+  let(:board) { create(:board, user_id: user.id) }
   let(:list_done) { board.lists.first }
   #let(:card) { create(:card, list_id: list_done.id)}
 
 
   before do
-    @user = create(:user)
+    @user = user
     sign_in @user
   end
 
@@ -23,6 +24,8 @@ describe Api::V1::CardsController do
   end
 
   it "shouldnt be saved because the user dosnt own the board" do
+    new_user = create(:user)
+    sign_in new_user
     proc {
       post :create, card: { title: 'Lets do it', list_id: list_done.id }
     }.must_raise ActiveRecord::RecordNotFound

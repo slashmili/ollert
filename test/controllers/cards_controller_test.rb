@@ -3,12 +3,13 @@ require "test_helper"
 describe CardsController do
   include Devise::TestHelpers
 
-  let(:board) { create(:board) }
+  let(:user) { create(:user) }
+  let(:board) { create(:board, user_id: user.id) }
   let(:list_done) { board.lists.first }
   let(:card) { create(:card, list_id: list_done.id)}
 
   before do
-    @user = create(:user)
+    @user = user
     sign_in @user
   end
 

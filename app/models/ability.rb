@@ -15,5 +15,14 @@ class Ability
     can :edit, List do |list|
       list.board.user == user
     end
+
+    can :edit, Card do |card|
+      card.list.board.user == user
+    end
+
+    can :read, Card do |card|
+      #TODO: fix n+1 issue
+      card.list.board.user == user || card.list.board.public?
+    end
   end
 end

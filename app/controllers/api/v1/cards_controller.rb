@@ -2,6 +2,7 @@ class Api::V1::CardsController < ApplicationController
   respond_to :json
   before_action :has_access?, only: [:create]
   before_action :set_card, only: [:update, :show]
+  skip_before_filter :authenticate_user!, only: [:show]
 
   def create
     @card = Card.new(card_params)
@@ -14,6 +15,7 @@ class Api::V1::CardsController < ApplicationController
   end
 
   def update
+    authorize! :edit, @card
     if @card.update(card_params)
         render json: @card, status: :ok, location: @card
     else
@@ -22,12 +24,13 @@ class Api::V1::CardsController < ApplicationController
   end
 
   def show
+    authorize! :read, @card
     render json: @card, status: :ok, location: @card
   end
 
   private
   def set_card
-    @card = current_user.cards.find(params[:id])
+    @card = Card.find(params[:id])
   end
 
 

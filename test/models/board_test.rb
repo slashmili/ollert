@@ -16,14 +16,14 @@ describe Board do
 
   it "must assign the admin on creating" do
     board = create(:board, user_id: user.id)
-    user.board_accesses.where(board: board).first.roles.must_equal %i[owner admin]
+    user.memberships.where(board: board).first.roles.must_equal %i[owner admin]
   end
 
   it "must be able to assing a board to another user" do
     board = create(:board, user_id: user.id)
     new_member = create(:user)
 
-    board.board_accesses.create(board: board, user: new_member, roles: %i[normal])
+    board.memberships.create(board: board, user: new_member, roles: %i[normal])
 
     new_member.boards.first.must_equal board
     new_member.boards.first.permission(new_member).must_equal %i[normal]

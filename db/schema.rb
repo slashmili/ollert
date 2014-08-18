@@ -16,14 +16,6 @@ ActiveRecord::Schema.define(version: 20140817043522) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "board_accesses", force: true do |t|
-    t.integer  "roles_mask", default: 0, null: false
-    t.integer  "board_id",               null: false
-    t.integer  "user_id",                null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "boards", force: true do |t|
     t.string   "title"
     t.datetime "created_at"
@@ -57,6 +49,14 @@ ActiveRecord::Schema.define(version: 20140817043522) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.float    "position",   default: 1.0
+  end
+
+  create_table "memberships", force: true do |t|
+    t.integer  "roles_mask", default: 0, null: false
+    t.integer  "board_id",               null: false
+    t.integer  "user_id",                null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: true do |t|

@@ -7,9 +7,11 @@ class Board < ActiveRecord::Base
   after_create :assign_admin
   after_create :create_default_list
   scope :accessible, lambda { |u| where('public = ? or user_id = ?', true, u.id) }
+  scope :with_membership, lambda {  select('boards.*, memberships.id as membership_id') }
 
-  def permission(user)
-    memberships.where(user: user, board: self).first.roles
+  belongs_to :membership #nasty hack!
+  def roles
+    membership.roles
   end
 
   def assign_admin

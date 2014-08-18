@@ -23,9 +23,9 @@ describe Board do
     board = create(:board, user_id: user.id)
     new_member = create(:user)
 
-    board.memberships.create(board: board, user: new_member, roles: %i[normal])
+    Membership.create(board: board, user: new_member, roles: %i[normal])
 
-    new_member.boards.first.must_equal board
-    new_member.boards.first.permission(new_member).must_equal %i[normal]
+    new_member.boards.with_membership.first.must_equal board
+    new_member.boards.with_membership.first.roles.must_equal %i[normal]
   end
 end

@@ -28,4 +28,10 @@ describe Board do
     new_member.boards.with_membership.first.must_equal board
     new_member.boards.with_membership.first.roles.must_equal %i[normal]
   end
+
+  it "must consider roles as :guest if it's not connected to any account" do
+    board = create(:board, user_id: user.id, public: true)
+    board.roles.must_equal %i[guest]
+  end
+
 end

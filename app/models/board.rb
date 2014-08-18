@@ -11,7 +11,7 @@ class Board < ActiveRecord::Base
 
   belongs_to :membership #nasty hack!
   def roles
-    membership.roles
+    membership.try(:roles) || [:guest]
   end
 
   def assign_admin

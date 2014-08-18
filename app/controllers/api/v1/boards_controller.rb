@@ -5,7 +5,7 @@ class Api::V1::BoardsController < ApplicationController
 
   def index
     if current_user
-      respond_with current_user.boards
+      respond_with current_user.boards.with_membership
     else
       respond_with boards: []
     end
@@ -30,7 +30,11 @@ class Api::V1::BoardsController < ApplicationController
   private
 
   def set_board
-    @board = Board.find(params[:id])
+    if current_user
+      @board = current_user.boards.with_membership.find_by_id(params[:id]) || Board.find(params[:id])
+    else
+      @board = Board.find(params[:id])
+    end
     authorize! :read, @board
   end
 

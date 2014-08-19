@@ -24,6 +24,7 @@ Rails.application.routes.draw do
       resources :cards
       resources :comments
       resources :memberships
+      resources :users
     end
   end
 

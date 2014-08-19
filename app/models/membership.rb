@@ -10,4 +10,10 @@ class Membership < ActiveRecord::Base
   def roles
     ROLES.reject { |r| ((roles_mask || 0) & 2**ROLES.index(r)).zero? }
   end
+
+  def any_role?(roles)
+    roles.each do |r|
+      return true if roles.include? r
+    end
+  end
 end

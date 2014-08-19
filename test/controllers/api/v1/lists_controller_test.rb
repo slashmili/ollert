@@ -57,6 +57,15 @@ describe Api::V1::ListsController do
     board.lists.order(position: :asc).last.must_equal todo_list
   end
 
+
+  it "should be able to access to own board's lists" do
+    sign_in @user
+
+    get :index, format: :json, ids: [board.lists.first.id]
+    response.status.must_equal 200
+    assigns(:lists).length.must_equal 1
+  end
+
   it "should be able to access to a public board's lists" do
     user_foo = create(:user)
     board_foo = create(:board, user_id: user_foo.id, public: true)

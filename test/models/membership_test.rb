@@ -18,4 +18,16 @@ describe Membership do
     board_access.roles= %i[normal]
     board_access.roles.must_equal %i[normal]
   end
+
+  it "must be readable by it's own user" do
+    user = create(:user)
+    board = create(:board, user_id: user.id)
+    user.boards.first.membership.can_read_by? user
+  end
+
+  it "must be readable if board is public" do
+    user = create(:user)
+    board = create(:board, user_id: user.id, public: true)
+    user.boards.first.membership.can_read_by? nil
+  end
 end

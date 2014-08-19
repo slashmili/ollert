@@ -18,11 +18,9 @@ test 'calling add_list', () ->
 
   save = sinon.stub()
   save.returns({then: (f)-> 1})
-  store =
-    createRecord: () ->
-      {
-        save: save
-      }
+  store = sinon.stub()
+  store.createRecord = sinon.stub()
+  store.createRecord.returns({save:save})
   ctrl = @subject()
   Ember.run () ->
     ctrl.set 'store', store

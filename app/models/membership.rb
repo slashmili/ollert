@@ -16,4 +16,8 @@ class Membership < ActiveRecord::Base
       return true if roles.include? r
     end
   end
+
+  def can_read_by?(user)
+    board.can_read_by? user
+  end
 end

@@ -24,5 +24,9 @@ class Ability
     can :read, Card do |card|
       card.can_read_by? user
     end
+
+    can :read, Membership do |mem|
+      mem.can_read_by? user
+    end
   end
 end

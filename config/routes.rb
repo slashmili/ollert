@@ -23,6 +23,7 @@ Rails.application.routes.draw do
       resources :lists
       resources :cards
       resources :comments
+      resources :memberships
     end
   end
 

@@ -25,4 +25,8 @@ class Board < ActiveRecord::Base
       lists.create(title: title, position: position)
     end
   end
+
+  def can_read_by?(user)
+      self.public? || memberships.where(user: user).first.any_role?(%i[owner admin normal])
+  end
 end

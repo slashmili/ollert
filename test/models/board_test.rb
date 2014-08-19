@@ -4,6 +4,7 @@ require 'test_helper'
 
 describe Board do
   let(:user) { create(:user) }
+  let(:board) { create(:board, user_id: user.id) }
   it "wont save a board with the same name" do
     Board.create!(:title => "Foo", user_id: user.id)
     lambda {Board.create!(:title => "Foo")}.must_raise(ActiveRecord::RecordInvalid)
@@ -32,6 +33,11 @@ describe Board do
   it "must consider roles as :guest if it's not connected to any account" do
     board = create(:board, user_id: user.id, public: true)
     board.roles.must_equal %i[guest]
+    board.can_read_by?(nil).must_equal true
+  end
+
+  it "must be readable for the owner" do
+    board.can_read_by?(user).must_equal true
   end
 
 end

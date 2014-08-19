@@ -26,8 +26,8 @@ describe Board do
 
     Membership.create(board: board, user: new_member, roles: %i[normal])
 
-    new_member.boards.with_membership.first.must_equal board
-    new_member.boards.with_membership.first.roles.must_equal %i[normal]
+    new_member.boards.first.must_equal board
+    new_member.boards.first.roles.must_equal %i[normal]
   end
 
   it "must consider roles as :guest if it's not connected to any account" do

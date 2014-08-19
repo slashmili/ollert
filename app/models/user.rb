@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable
   has_many :memberships
-  has_many :boards, through: :memberships
+  has_many :boards, -> { select 'boards.*, memberships.id as membership_id'}, through: :memberships
   has_many :lists, through: :boards
   has_many :cards, through: :lists
   has_many :comments, through: :cards

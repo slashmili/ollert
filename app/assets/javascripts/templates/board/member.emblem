@@ -1,0 +1,15 @@
+img width="30px" height="30px" src=this.user.avatar title=this.user.name
+section.popup
+  if changing_permission
+    header Change Permissions
+    a{action 'cancel_change_permission_form'} Back
+    section{action 'make_admin'} class=has_admin_role:current Admin
+    section{action 'make_normal'} class=has_normal_role:current Normal
+  else
+    img src=user.avatar
+    span.name
+      = user.name
+    span.username
+      = user.username
+    a{action 'open_change_permission_form'} Change permission
+    a{action 'leave_board'} Remove from the board

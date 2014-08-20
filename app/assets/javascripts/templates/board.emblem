@@ -1,9 +1,9 @@
 section.board
   header = title
-  section.members
+  section.memberships
     p members
     each memberships
-      img src=this.user.avatar title=this.user.name
+      render "board/member" this
   section.lists class="lists-sortable"
     render "board/lists" lists
 = outlet

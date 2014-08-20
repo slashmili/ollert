@@ -40,6 +40,31 @@ section.boards {
 }
 section.board {
     padding-left: 10px;
+    .memberships {
+      .member {
+        padding-left: 3px;
+        display: inline-block;
+        .popup {
+          position: absolute;
+          display: none;
+          background-color: #fff;
+          max-height: 399px;
+          height: 170px;
+          width: 300px;
+          border-radius: 3px;
+          border-bottom-color: #c2c2c2;
+          border: 1px solid #dbdbdb;
+          .current {
+            color:gray;
+          }
+        }
+      }
+      .member:hover > .popup {
+        display: block;
+          position: absolute;
+      }
+
+    }
     .lists {
         display: flex;
         flex-direction: row;

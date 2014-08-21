@@ -18,7 +18,7 @@ class Ability
 
     can :edit, Card do |card|
       card.can_edit_by? user
-      card.list.board.memberships.where(user: user).first.any_role?(%i[owner admin normal])
+      card.list.board.memberships.where(user: user).first.any_role?(%w[owner admin normal])
     end
 
     can :read, Card do |card|

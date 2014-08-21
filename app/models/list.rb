@@ -9,6 +9,6 @@ class List < ActiveRecord::Base
   end
 
   def can_edit_by?(user)
-    board.memberships.where(user: user).first.any_role?(%i[owner admin normal])
+    board.memberships.where(user: user).first.any_role?(%w[owner admin normal])
   end
 end

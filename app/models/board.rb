@@ -14,7 +14,7 @@ class Board < ActiveRecord::Base
   end
 
   def assign_admin
-    Membership.create(user: user, board: self, roles: %i[admin owner])
+    Membership.create(user: user, board: self, roles: %w[admin owner])
   end
 
   def create_default_list
@@ -26,6 +26,6 @@ class Board < ActiveRecord::Base
   end
 
   def can_read_by?(user)
-      self.public? || memberships.where(user: user).first.any_role?(%i[owner admin normal])
+      self.public? || memberships.where(user: user).first.any_role?(%w[owner admin normal])
   end
 end

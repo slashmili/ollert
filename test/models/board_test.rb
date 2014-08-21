@@ -17,17 +17,17 @@ describe Board do
 
   it "must assign the admin on creating" do
     board = create(:board, user_id: user.id)
-    user.memberships.where(board: board).first.roles.must_equal %i[owner admin]
+    user.memberships.where(board: board).first.roles.must_equal %w[owner admin]
   end
 
   it "must be able to assing a board to another user" do
     board = create(:board, user_id: user.id)
     new_member = create(:user)
 
-    Membership.create(board: board, user: new_member, roles: %i[normal])
+    Membership.create(board: board, user: new_member, roles: %w[normal])
 
     new_member.boards.first.must_equal board
-    new_member.boards.first.roles.must_equal %i[normal]
+    new_member.boards.first.roles.must_equal %w[normal]
   end
 
   it "must consider roles as :guest if it's not connected to any account" do

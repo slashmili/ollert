@@ -28,5 +28,10 @@ class Ability
     can :read, Membership do |mem|
       mem.can_read_by? user
     end
+
+    can :edit, Membership do |mem|
+      mem.can_edit_by? user
+    end
+
   end
 end

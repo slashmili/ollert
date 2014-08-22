@@ -1,6 +1,6 @@
 class Api::V1::MembershipsController < ApplicationController
   respond_to :json
-  skip_before_filter :authenticate_user!, only: [:index]
+  skip_before_filter :authenticate_user!, only: [:index, :update]
 
   def index
     @memberships = Membership.where(id: params[:ids])
@@ -9,4 +9,19 @@ class Api::V1::MembershipsController < ApplicationController
       authorize! :read, mem
     end
   end
+
+  def update
+    @membership = Membership.find(params[:id])
+    authorize! :edit, @membership
+    @membership.roles = params[:membership][:roles]
+    @membership.save
+    render json: @membership, status: :ok
+  end
+
+  private
+
+  def membership_params
+    params.require(:membership).permit(:id, :roles, :board_id, :user_id)
+  end
+
 end

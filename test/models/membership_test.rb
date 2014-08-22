@@ -30,4 +30,23 @@ describe Membership do
     board = create(:board, user_id: user.id, public: true)
     user.boards.first.membership.can_read_by? nil
   end
+
+  it "must be editable if user is admin" do
+    user = create(:user)
+    new_user = create(:user)
+    board = create(:board, user_id: user.id, public: true)
+
+    mem = Membership.create(board: board, user: user, roles: %w[normal])
+    user.boards.first.membership.can_edit_by?(user).must_equal true
+  end
+
+
+  it "wont be editable if user is not admin" do
+    user = create(:user)
+    new_user = create(:user)
+    board = create(:board, user_id: user.id, public: true)
+
+    mem = Membership.create(board: board, user: new_user, roles: %w[normal])
+    mem.can_edit_by?(new_user).must_equal false
+  end
 end

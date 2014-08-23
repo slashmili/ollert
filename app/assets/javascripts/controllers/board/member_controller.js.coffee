@@ -5,6 +5,10 @@ Ollert.BoardMemberController = Ember.ObjectController.extend
       @get('model').set('roles', ['admin'])
       @get('model').save()
 
+    make_normal: () ->
+      @get('model').set('roles', ['normal'])
+      @get('model').save()
+
     cancel_change_permission_form: () ->
       @toggleProperty 'changing_permission'
       false

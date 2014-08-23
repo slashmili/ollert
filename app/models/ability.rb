@@ -33,5 +33,9 @@ class Ability
       mem.can_edit_by? user
     end
 
+    can :destroy, Membership do |mem|
+      mem.can_destroy_by? user
+    end
+
   end
 end

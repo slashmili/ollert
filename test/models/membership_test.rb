@@ -49,4 +49,32 @@ describe Membership do
     mem = Membership.create(board: board, user: new_user, roles: %w[normal])
     mem.can_edit_by?(new_user).must_equal false
   end
+
+  it "must be destroyable by admin user" do
+    admin_user = create(:user)
+    new_user = create(:user)
+    board = create(:board, user_id: admin_user.id, public: true)
+
+    mem = Membership.create(board: board, user: new_user, roles: %w[normal])
+    mem.can_destroy_by?(admin_user).must_equal true
+  end
+
+  it "must be destroyable by normal user" do
+    admin_user = create(:user)
+    new_user = create(:user)
+    board = create(:board, user_id: admin_user.id, public: true)
+
+    mem = Membership.create(board: board, user: new_user, roles: %w[normal])
+    mem.can_destroy_by?(new_user).must_equal false
+  end
+
+  it "wont be destroyable by guest user" do
+    admin_user = create(:user)
+    new_user = create(:user)
+    board = create(:board, user_id: admin_user.id, public: true)
+
+    mem = Membership.create(board: board, user: new_user, roles: %w[normal])
+    mem.can_destroy_by?(nil).must_equal false
+  end
+
 end

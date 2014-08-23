@@ -23,7 +23,12 @@ class Membership < ActiveRecord::Base
   end
 
   def can_edit_by?(user)
+    return false unless user
     membership = user.boards.where(id: board.id).first.try(:membership)
     membership && membership.any_role?(%w[admin])
+  end
+
+  def can_destroy_by?(user)
+    can_edit_by? user
   end
 end

@@ -1,6 +1,6 @@
 class Api::V1::MembershipsController < ApplicationController
   respond_to :json
-  skip_before_filter :authenticate_user!, only: [:index, :update]
+  skip_before_filter :authenticate_user!, only: [:index, :update, :destroy]
 
   def index
     @memberships = Membership.where(id: params[:ids])
@@ -16,6 +16,13 @@ class Api::V1::MembershipsController < ApplicationController
     @membership.roles = params[:membership][:roles]
     @membership.save
     render json: @membership, status: :ok
+  end
+
+  def destroy
+    @membership = Membership.find(params[:id])
+    authorize! :destroy, @membership
+    @membership.destroy
+    respond_with {}
   end
 
   private

@@ -15,3 +15,7 @@ Ollert.BoardMemberController = Ember.ObjectController.extend
     open_change_permission_form: () ->
       @toggleProperty 'changing_permission'
       false
+    leave_board: () ->
+      mem = @get('model')
+      mem.deleteRecord()
+      mem.save()

@@ -45,4 +45,21 @@ describe Api::V1::MembershipsController do
   end
 
 
+  it "must allow admin user to remove a member" do
+    sign_in user
+
+    new_member = create(:user)
+    mem = Membership.create(user: new_member, board: board, roles: %w[normal])
+    delete :destroy, format: :json, id: mem
+  end
+
+
+  it "wont allow user without login to remove a member" do
+    new_member = create(:user)
+    mem = Membership.create(user: new_member, board: board, roles: %w[normal])
+
+    proc {
+      delete :destroy, format: :json, id: mem
+    }.must_raise CanCan::AccessDenied
+  end
 end

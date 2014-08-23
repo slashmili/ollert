@@ -33,7 +33,6 @@ describe Membership do
 
   it "must be editable if user is admin" do
     user = create(:user)
-    new_user = create(:user)
     board = create(:board, user_id: user.id, public: true)
 
     mem = Membership.create(board: board, user: user, roles: %w[normal])

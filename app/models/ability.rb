@@ -36,6 +36,5 @@ class Ability
     can :destroy, Membership do |mem|
       mem.can_destroy_by? user
     end
-
   end
 end

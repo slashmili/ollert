@@ -19,10 +19,9 @@ describe Api::V1::MembershipsController do
 
     new_member = create(:user)
     mem = Membership.create(user: new_member, board: board, roles: %w[normal])
-    put :update, format: :json, id: mem, membership: { board_id: board.id, user_id: user.id, roles:['admin'] }
+    put :update, format: :json, id: mem, membership: { board_id: board.id, user_id: user.id, roles: ['admin'] }
     assigns(:membership).roles.must_equal %w[admin]
   end
-
 
   it "wont allow normal user change roles" do
     new_member = create(:user)

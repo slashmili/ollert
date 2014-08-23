@@ -23,6 +23,7 @@ class Membership < ActiveRecord::Base
   end
 
   def can_edit_by?(user)
-    user && user.boards.where(id: board.id).first.membership.any_role?(%w[admin])
+    membership = user.boards.where(id: board.id).first.try(:membership)
+    membership && membership.any_role?(%w[admin])
   end
 end

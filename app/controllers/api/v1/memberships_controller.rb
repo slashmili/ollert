@@ -14,8 +14,11 @@ class Api::V1::MembershipsController < ApplicationController
     @membership = Membership.find(params[:id])
     authorize! :edit, @membership
     @membership.roles = params[:membership][:roles]
-    @membership.save
-    render json: @membership, status: :ok
+    if @membership.save
+      render json: @membership, status: :ok
+    else
+      render json: @membership, status: :unprocessable_entity
+    end
   end
 
   def destroy
@@ -30,5 +33,4 @@ class Api::V1::MembershipsController < ApplicationController
   def membership_params
     params.require(:membership).permit(:id, :roles, :board_id, :user_id)
   end
-
 end

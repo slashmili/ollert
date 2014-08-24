@@ -1,4 +1,8 @@
 section.comment
+  .avatar
+    img src=user.avatar
+  a.author href="/users"
+    = user.name
   .text
     if editing_comment
         Ember.TextArea value=text

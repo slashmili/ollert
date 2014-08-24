@@ -34,20 +34,30 @@ gem 'spring',        group: :development
 
 group :development, :test do
   gem "minitest-rails"
-  gem 'sqlite3'
   gem 'factory_girl_rails'
   gem 'guard-minitest'
   gem 'pry-rails'
-  gem 'pry-byebug'
   gem 'guard-teaspoon'
   gem 'teaspoon'
   gem 'spring-commands-teaspoon'
   gem "phantomjs"
 end
 
+group :jruby do
+  gem 'activerecord-jdbcpostgresql-adapter'
+  if `ruby --version` =~ /jruby/
+    ruby '1.9.3', :engine => 'jruby', :engine_version => '1.7.13'
+  end
+end
+
+group :mri do
+  gem 'pg'
+  ruby "2.1.0" unless `ruby --version` =~ /jruby/
+  gem 'pry-byebug'
+end
+
 gem 'devise'
 gem 'cancan'
-gem 'pg'
 gem 'omniauth-google-oauth2'
 
 # Use ActiveModel has_secure_password
@@ -62,4 +72,3 @@ gem 'omniauth-google-oauth2'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-ruby "2.1.0"

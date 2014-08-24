@@ -1,6 +1,6 @@
 class Api::V1::MembershipsController < ApplicationController
   respond_to :json
-  skip_before_filter :authenticate_user!, only: [:index, :update, :destroy]
+  skip_before_filter :authenticate_user!, only: [:index, :create, :update, :destroy]
 
   def index
     @memberships = Membership.where(id: params[:ids])
@@ -12,7 +12,7 @@ class Api::V1::MembershipsController < ApplicationController
 
   def create
     @membership = Membership.new(membership_params)
-
+    authorize! :create, @membership
     if @membership.save
       render json: @membership
     else

@@ -70,4 +70,20 @@ describe Api::V1::MembershipsController do
       delete :destroy, format: :json, id: mem
     }.must_raise CanCan::AccessDenied
   end
+
+  it "must allow admin user to add a member" do
+    sign_in user
+
+    new_member = create(:user)
+    post :create, membership: {user_id: new_member.id, board_id: board.id, roles: ["normal"]}
+  end
+
+
+  it "wont allow user without login to add a member" do
+    new_member = create(:user)
+    proc {
+      post :create, membership: {user_id: new_member.id, board_id: board.id, roles: ["normal"]}
+    }.must_raise CanCan::AccessDenied
+  end
+
 end

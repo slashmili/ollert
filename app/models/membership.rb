@@ -31,4 +31,9 @@ class Membership < ActiveRecord::Base
   def can_destroy_by?(user)
     can_edit_by? user
   end
+
+  def can_create_by?(user)
+    can_edit_by? user
+  end
+
 end

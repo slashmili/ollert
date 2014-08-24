@@ -76,4 +76,22 @@ describe Membership do
     mem.can_destroy_by?(nil).must_equal false
   end
 
+  it "must be creatable if user is admin" do
+    user = create(:user)
+    board = create(:board, user_id: user.id, public: true)
+
+    mem = Membership.create(board: board, user: user, roles: %w[normal])
+    user.boards.first.membership.can_create_by?(user).must_equal true
+  end
+
+
+  it "wont be creatable if user is not admin" do
+    user = create(:user)
+    new_user = create(:user)
+    board = create(:board, user_id: user.id, public: true)
+
+    mem = Membership.create(board: board, user: new_user, roles: %w[normal])
+    mem.can_create_by?(new_user).must_equal false
+    mem.can_create_by?(nil).must_equal false
+  end
 end

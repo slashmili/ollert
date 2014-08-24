@@ -26,6 +26,6 @@ class Board < ActiveRecord::Base
   end
 
   def can_read_by?(user)
-      self.public? || memberships.where(user: user).first.any_role?(%w[owner admin normal])
+    self.public? || memberships.where(user: user).first.try(:any_role?, %w[owner admin normal])
   end
 end

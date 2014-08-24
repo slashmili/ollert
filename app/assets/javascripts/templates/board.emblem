@@ -4,6 +4,7 @@ section.board
     p members
     each memberships
       render "board/member" this
+    render "board/find_member"
   section.lists class="lists-sortable"
     render "board/lists" lists
 = outlet

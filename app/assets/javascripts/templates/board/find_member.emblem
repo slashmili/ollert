@@ -1,0 +1,5 @@
+Ember.TextField value=search_new_member
+each members
+  li{action 'add_member' this}
+    img src=avatar
+    = name

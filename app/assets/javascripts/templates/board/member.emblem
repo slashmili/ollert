@@ -10,6 +10,7 @@ section.popup
     span.name
       = user.name
     span.username
+      | @
       = user.username
     a{action 'open_change_permission_form'} Change permission
     a{action 'leave_board'} Remove from the board

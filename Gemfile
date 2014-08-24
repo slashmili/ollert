@@ -51,9 +51,11 @@ group :jruby do
 end
 
 group :mri do
-  gem 'pg'
-  ruby "2.1.0" unless `ruby --version` =~ /jruby/
-  gem 'pry-byebug'
+  unless `ruby --version` =~ /jruby/
+    ruby "2.1.0" unless `ruby --version` =~ /jruby/
+    gem 'pg'
+    gem 'pry-byebug'
+  end
 end
 
 gem 'devise'

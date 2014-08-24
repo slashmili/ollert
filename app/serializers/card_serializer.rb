@@ -1,5 +1,4 @@
 class CardSerializer < ActiveModel::Serializer
-  embed :ids
   attributes :id, :title, :list_id, :position, :description
-  has_many :comments
+  has_many :comments, embed: :ids
 end

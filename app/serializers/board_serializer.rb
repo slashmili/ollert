@@ -1,6 +1,5 @@
 class BoardSerializer < ActiveModel::Serializer
-  embed :ids
   attributes :id, :title, :public, :roles
-  has_many :lists
-  has_many :memberships
+  has_many :lists, embed: :ids
+  has_many :memberships, embed: :ids
 end

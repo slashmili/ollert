@@ -6,6 +6,15 @@ describe Api::V1::MembershipsController do
   let(:user) { create(:user) }
   let(:board) { create(:board, user_id: user.id) }
 
+  it "creates membership'" do
+    sign_in user
+    new_member = create(:user)
+
+    post :create, membership: {user_id: new_member.id, board_id: board.id, roles: ["normal"]}
+    assigns(:membership).user.must_equal new_member
+    assigns(:membership).roles.must_equal ["normal"]
+  end
+
   it "shows memberships" do
     sign_in user
 

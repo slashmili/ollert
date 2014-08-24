@@ -10,10 +10,20 @@ class Api::V1::MembershipsController < ApplicationController
     end
   end
 
+  def create
+    @membership = Membership.new(membership_params)
+
+    if @membership.save
+      render json: @membership
+    else
+      render json: @membership.errors, status: :unprocessable_entity
+    end
+  end
+
   def update
     @membership = Membership.find(params[:id])
     authorize! :edit, @membership
-    @membership.roles = params[:membership][:roles]
+    @membership.roles = membership_params[:roles]
     if @membership.save
       render json: @membership, status: :ok
     else
@@ -31,6 +41,6 @@ class Api::V1::MembershipsController < ApplicationController
   private
 
   def membership_params
-    params.require(:membership).permit(:id, :roles, :board_id, :user_id)
+    params.require(:membership).permit(:id, :board_id, :user_id, :roles => [])
   end
 end

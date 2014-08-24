@@ -14,7 +14,6 @@ describe Membership do
   it "must save a role" do
     user = create(:user)
     board = create(:board, user_id: user.id)
-    board_access = create(:membership, user_id: user.id, board_id: board.id)
     board_access.roles= %w[normal]
     board_access.roles.must_equal %w[normal]
   end
@@ -34,8 +33,9 @@ describe Membership do
   it "must be editable if user is admin" do
     user = create(:user)
     board = create(:board, user_id: user.id, public: true)
+    new_user = create(:user)
 
-    mem = Membership.create(board: board, user: user, roles: %w[normal])
+    mem = Membership.create(board: board, user: new_user, roles: %w[normal])
     user.boards.first.membership.can_edit_by?(user).must_equal true
   end
 
@@ -79,8 +79,9 @@ describe Membership do
   it "must be creatable if user is admin" do
     user = create(:user)
     board = create(:board, user_id: user.id, public: true)
+    new_user = create(:user)
 
-    mem = Membership.create(board: board, user: user, roles: %w[normal])
+    mem = Membership.create(board: board, user: new_user, roles: %w[normal])
     user.boards.first.membership.can_create_by?(user).must_equal true
   end
 
@@ -93,5 +94,15 @@ describe Membership do
     mem = Membership.create(board: board, user: new_user, roles: %w[normal])
     mem.can_create_by?(new_user).must_equal false
     mem.can_create_by?(nil).must_equal false
+  end
+
+  it "wont allow to have the double membership" do
+    user = create(:user)
+    new_user = create(:user)
+    board = create(:board, user_id: user.id, public: true)
+
+    proc {
+    mem = Membership.create(board: board, user: user, roles: %w[normal])
+    }.must_raise ActiveRecord::RecordNotUnique
   end
 end

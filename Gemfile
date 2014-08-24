@@ -33,15 +33,10 @@ gem 'active_model_serializers'
 gem 'spring',        group: :development
 
 group :development, :test do
-  #gem 'webkit-webdriver'
-  gem 'capybara-webkit'
-  gem 'selenium-webdriver'
-  gem "minitest-rails-capybara"
   gem "minitest-rails"
   gem 'sqlite3'
   gem 'factory_girl_rails'
   gem 'guard-minitest'
-  gem 'database_cleaner'
   gem 'pry-rails'
   gem 'pry-byebug'
   gem 'guard-teaspoon'

@@ -10,5 +10,6 @@ section.comment
   .date #{moment created_at}
   .actions
     a{action 'edit_comment_form'} Edit
-    span  - 
+    span
+    '  -
     a{action 'delete_comment'} Delete

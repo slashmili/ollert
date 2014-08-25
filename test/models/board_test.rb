@@ -5,6 +5,11 @@ require 'test_helper'
 describe Board do
   let(:user) { create(:user) }
   let(:board) { create(:board, user_id: user.id) }
+
+  it "must have default tags" do
+    board.tags.must_equal JSON.parse(Board::TAGS.to_json)
+  end
+
   it "wont save a board with the same name" do
     Board.create!(:title => "Foo", user_id: user.id)
     lambda {Board.create!(:title => "Foo")}.must_raise(ActiveRecord::RecordInvalid)

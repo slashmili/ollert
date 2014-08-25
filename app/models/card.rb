@@ -3,7 +3,6 @@ class Card < ActiveRecord::Base
   belongs_to :list
   has_many :comments
 
-
   def can_read_by?(user)
     list.can_read_by? user
   end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140824095438) do
+ActiveRecord::Schema.define(version: 20140825152801) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20140824095438) do
     t.datetime "updated_at"
     t.integer  "user_id",    default: 0,     null: false
     t.boolean  "public",     default: false
+    t.json     "tags"
   end
 
   add_index "boards", ["title"], name: "index_boards_on_title", unique: true, using: :btree
@@ -33,6 +34,7 @@ ActiveRecord::Schema.define(version: 20140824095438) do
     t.datetime "updated_at"
     t.float    "position"
     t.string   "description"
+    t.json     "tags"
   end
 
   create_table "comments", force: true do |t|

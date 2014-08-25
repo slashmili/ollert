@@ -18,4 +18,11 @@ describe Card do
     board.save
     card.can_read_by?(nil).must_equal true
   end
+
+  it "must save the tags that are available in board" do
+    card.tags = [{color:'red', name:''}]
+    card.save
+    card.tags.must_equal [{'color' => 'red', 'name' => ''}]
+  end
+
 end

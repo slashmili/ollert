@@ -4,15 +4,30 @@ class Board < ActiveRecord::Base
   belongs_to :user #creator
   has_many :memberships
   has_many :users, through: :memberships
+  before_create :set_default_tags
   after_create :assign_admin
   after_create :create_default_list
   scope :accessible, lambda { |u| where('public = ? or user_id = ?', true, u.id) }
+
+  TAGS = [
+    {color: 'green', name:''},
+    {color: 'yellow', name:''},
+    {color: 'orange', name:''},
+    {color: 'red', name:''},
+    {color: 'purple', name:''},
+    {color: 'blue', name:''}
+  ]
 
   belongs_to :membership #nasty hack!
   def roles
     membership.try(:roles) || [:guest]
   end
 
+  def can_read_by?(user)
+    self.public? || memberships.where(user: user).first.try(:any_role?, %w[owner admin normal])
+  end
+
+  private
   def assign_admin
     Membership.create(user: user, board: self, roles: %w[admin owner])
   end
@@ -25,7 +40,8 @@ class Board < ActiveRecord::Base
     end
   end
 
-  def can_read_by?(user)
-    self.public? || memberships.where(user: user).first.try(:any_role?, %w[owner admin normal])
+  def set_default_tags
+    self.tags ||= TAGS
   end
+
 end

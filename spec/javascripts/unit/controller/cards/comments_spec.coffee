@@ -1,4 +1,5 @@
 moduleFor 'controller:card', 'Card Controller',
+  needs: ['controller:board']
   setup: () ->
     Ollert.reset()
     #resetFixtures()

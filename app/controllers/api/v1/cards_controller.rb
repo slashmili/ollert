@@ -16,7 +16,6 @@ class Api::V1::CardsController < ApplicationController
 
   def update
     authorize! :edit, @card
-    p params
     @card.tags = params[:card][:tags] || []
     if @card.update(card_params)
         render json: @card, status: :ok, location: @card

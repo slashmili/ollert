@@ -1,3 +1,23 @@
+.green-label {
+  background-color: #34b27d;
+}
+.yellow-label {
+  background-color: #dbdb57;
+}
+.orange-label {
+  background-color: #e09952;
+}
+.red-label {
+  background-color: #cb4d4d;
+}
+.purple-label {
+  background-color: #93c;
+}
+.blue-label {
+  background-color: #4d77cb;
+}
+
+
 .cards {
     list-style: none;
     background-color:#f0f0f0;
@@ -98,9 +118,29 @@ section.board {
                 min-height: 20px;
                 cursor: pointer;
                 border-radius: 3px;
-            }
-            header {
+                .labels {
+                  .label {
+                    border-radius: 0;
+                    float: left;
+                    height: 4px;
+                    margin-bottom: 1px;
+                    padding: 0;
+                    width: 40px;
+                    line-height: 100px;
+                    color: #fff;
+                    margin-right: 5px;
+                  }
+                  .green {
+                    background-color:#34b27d;
+                  }
+                }
+              }
+              header {
               cursor: pointer;
+            }
+            .title {
+              clear: both;
+              padding: 5px 0px 7px 0px;
             }
           }
     }
@@ -181,12 +221,42 @@ section.card {
       font-weight: bold;
       font-size: 18px;
     }
-    width:40%;
+    width: 722px;
     margin: 100px auto;
     background: #f0f0f0;
     border:1px solid #000;
     padding:15px;
     border-radius: 3px;
+  }
+
+  .menu {
+    float: right;
+    .label_form {
+      position: absolute;
+      ul {
+        list-style: none;
+      }
+      li {
+        cursor: pointer;
+        border-radius: 3px;
+        a {
+          display: block;
+          color: #eee;
+          cursor: pointer;
+          margin: 0 24px 3px 0;
+          min-height: 18px;
+          padding: 8px;
+          position: relative;
+          -webkit-transition: margin-right .1s;
+          transition: margin-right .1s;
+          -webkit-transition-delay: 50ms;
+          transition-delay: 50ms;
+        }
+      }
+    }
+  }
+  .module {
+    width: 521px;
   }
 
   .description {

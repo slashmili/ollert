@@ -1,0 +1,6 @@
+.item data-position="{{unbound position}}" data-id="{{unbound id}}" = link-to "card" this
+  section.labels
+    each tags
+      view 'boardCardTinyLabel' label=this
+        '
+  section.title = title

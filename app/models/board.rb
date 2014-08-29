@@ -9,14 +9,7 @@ class Board < ActiveRecord::Base
   after_create :create_default_list
   scope :accessible, lambda { |u| where('public = ? or user_id = ?', true, u.id) }
 
-  TAGS = [
-    {color: 'green', name:''},
-    {color: 'yellow', name:''},
-    {color: 'orange', name:''},
-    {color: 'red', name:''},
-    {color: 'purple', name:''},
-    {color: 'blue', name:''}
-  ]
+  TAGS = %w[ green yellow orange red purple blue ]
 
   belongs_to :membership #nasty hack!
   def roles

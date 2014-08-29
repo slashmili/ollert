@@ -25,5 +25,6 @@ FactoryGirl.define do
   factory :card do
     title 'Card title'
     list_id 0
+    tags []
   end
 end

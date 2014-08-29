@@ -3,3 +3,4 @@ Ollert.Board = DS.Model.extend
   lists: DS.hasMany('list', {async: true})
   public: DS.attr('boolean')
   memberships: DS.hasMany 'membership', {async: true}
+  tags: DS.attr()

@@ -26,3 +26,23 @@ $(document).ready () ->
   token = $('meta[name="csrf-token"]').attr('content')
   $.ajaxPrefilter (options, originalOptions, xhr) ->
     xhr.setRequestHeader('X-CSRF-Token', token)
+
+DS.ArrayTransform = DS.Transform.extend
+  deserialize: (serialized) ->
+    if Ember.typeOf(serialized) == "array"
+      Ember.ArrayProxy.create({ content: serialized })
+    else
+      []
+  serialize: (deserialized) ->
+    type = Ember.typeOf deserialized
+    if type == 'instance'
+      deserialized.toArray()
+    else if type == 'array'
+      deserialized
+    else if type == 'string'
+      deserialized.split(',').map (item) ->
+        jQuery.trim(item)
+    else
+      []
+
+Ollert.register("transform:array", DS.ArrayTransform)

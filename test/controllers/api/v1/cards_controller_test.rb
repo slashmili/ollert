@@ -14,13 +14,14 @@ describe Api::V1::CardsController do
     sign_in @user
   end
 
-  it "creats new" do
+  it "creates new" do
     board.user = @user
     board.save
-    post :create, card: { title: 'Lets do it', list_id: list_done.id, description: 'description' }
+    post :create, card: { title: 'Lets do it', list_id: list_done.id, description: 'description', tags: %w[green] }
     assigns(:card).title.must_equal 'Lets do it'
     assigns(:card).id.wont_equal nil, "Card shoud be saved"
     assigns(:card).description.must_equal 'description'
+    assigns(:card).tags.must_equal %w[green]
   end
 
   it "shouldnt be saved because the user dosnt own the board" do
@@ -34,10 +35,12 @@ describe Api::V1::CardsController do
   it "updates card" do
     board.user = @user
     board.save
-    card = create(:card, list_id: list_done.id)
-    put :update, id: card, card: { list_id: list_done.id, position: 1000, title: 'updates card' }
+    card = create(:card, list_id: list_done.id, tags: %w[ green ])
+    card.tags.must_equal %w[ green ], "Card must have #green tag"
+    put :update, id: card, card: { list_id: list_done.id, position: 1000, title: 'updates card', tags: [] }
     assigns(:card).title.must_equal 'updates card'
     assigns(:card).position.must_equal 1000
+    assigns(:card).tags.must_equal []
   end
 
   it "shows card" do

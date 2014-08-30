@@ -61,20 +61,26 @@ section.card {
 
   .menu {
     float: right;
-    .label_form {
+    .label-form {
       position: absolute;
+      background-color: #fff;
+      max-height: 313px;
+      height: 257px;
+      width: 300px;
+      border-radius: 3px;
+      border-bottom-color: #c2c2c2;
+      border: 1px solid #dbdbdb;
       ul {
         list-style: none;
       }
       li {
-        cursor: pointer;
         border-radius: 3px;
         a {
           display: block;
           color: #eee;
           cursor: pointer;
           margin: 0 24px 3px 0;
-          min-height: 18px;
+          min-height: 34px;
           padding: 8px;
           position: relative;
           -webkit-transition: margin-right .1s;
@@ -87,8 +93,27 @@ section.card {
   }
   .module {
     width: 521px;
+    .labels {
+        .tag {
+            color: #FFF;
+            border-radius: 3px;
+            display: block;
+            float: left;
+            height: 28px;
+            line-height: 20px;
+            margin: 0 4px 4px 0;
+            min-width: 30px;
+            padding: 5px 10px;
+            width: auto;
+            text-shadow: 0 1px 2px rgba(0,0,0,.6);
+            font-weight: bold;
+        }
+    }
   }
 
+  .clear {
+      clear: both;
+  }
   .description {
       textarea {
           min-height:156px;

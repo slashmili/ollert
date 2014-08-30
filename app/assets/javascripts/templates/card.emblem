@@ -19,13 +19,20 @@ section.card
         ul class="nav nav-pills nav-stacked"
           li.active
             a{action 'edit_label_form'} Lables
-            if editing_lables
-              section.label_form
-                ul
-                  each tags
-                    li{action 'add_remove_tag' this} class="{{unbound this}}-label"
-                      a = name
+        if editing_lables
+          section.label-form
+            header Labels
+            ul
+              each board_tags
+                li{action 'add_remove_tag' this} class="{{unbound this}}-label"
+                  a = name
     section.module
+      section.labels
+        header Labels
+        each tags
+          .label class="tag {{unbound this}}-label"
+            p = this
+      .clear
       section.description
         if editing_description
           Ember.TextArea value=description

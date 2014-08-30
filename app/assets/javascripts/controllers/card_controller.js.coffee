@@ -5,7 +5,7 @@ Ollert.CardController = Ember.ObjectController.extend
   adding_comment: false
   editing_lables: false
   new_comment: ''
-  tags: ( ->
+  board_tags: ( ->
     @get("controllers.board").get("model").get("tags")
   ).property()
   actions:

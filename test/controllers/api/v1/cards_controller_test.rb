@@ -27,9 +27,7 @@ describe Api::V1::CardsController do
   it "shouldnt be saved because the user dosnt own the board" do
     new_user = create(:user)
     sign_in new_user
-    proc {
-      post :create, card: { title: 'Lets do it', list_id: list_done.id }
-    }.must_raise ActiveRecord::RecordNotFound
+    proc { post :create, card: { title: 'Lets do it', list_id: list_done.id } }.must_raise ActiveRecord::RecordNotFound
   end
 
   it "updates card" do
@@ -50,6 +48,5 @@ describe Api::V1::CardsController do
     get :show, id: card
     assert_response :success
   end
-
 
 end

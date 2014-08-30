@@ -34,7 +34,6 @@ class Api::V1::CardsController < ApplicationController
     @card = Card.find(params[:id])
   end
 
-
   def has_access?
     current_user.lists.find(card_params[:list_id])
   end

@@ -26,5 +26,6 @@ FactoryGirl.define do
     title 'Card title'
     list_id 0
     tags []
+    members []
   end
 end

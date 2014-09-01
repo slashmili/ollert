@@ -27,6 +27,11 @@ section.card
                 li{action 'add_remove_tag' this} class="{{unbound this}}-label"
                   a = name
     section.module
+      if members
+        section.members
+          header Members
+          each members
+            img height="30px" src=avatar
       section.labels
         header Labels
         each tags

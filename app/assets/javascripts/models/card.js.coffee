@@ -5,6 +5,7 @@ Ollert.Card = DS.Model.extend
   list: DS.belongsTo 'list', {async: true}
   comments: DS.hasMany 'comment', {async: true}
   tags: DS.attr('array')
+  members: DS.hasMany 'user', {async: true}
   include_tags: (new_tag) ->
     matched = false
     if @.get('tags')

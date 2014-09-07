@@ -17,6 +17,7 @@ class Api::V1::CardsController < ApplicationController
   def update
     authorize! :edit, @card
     @card.tags = params[:card][:tags] || []
+    @card.members = params[:card][:member_ids] || params[:card][:members] || []
     if @card.update(card_params)
         render json: @card, status: :ok, location: @card
     else
@@ -39,6 +40,6 @@ class Api::V1::CardsController < ApplicationController
   end
 
   def card_params
-    params.require(:card).permit(:id, :title, :position, :list_id, :description, tags: [], members: [])
+    params.require(:card).permit(:id, :title, :position, :list_id, :description, tags: [], member_ids: [], members: [])
   end
 end

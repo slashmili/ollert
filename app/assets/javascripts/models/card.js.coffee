@@ -5,7 +5,13 @@ Ollert.Card = DS.Model.extend
   list: DS.belongsTo 'list', {async: true}
   comments: DS.hasMany 'comment', {async: true}
   tags: DS.attr('array')
-  members: DS.hasMany 'user', {async: true}
+  member_ids: DS.attr('array')
+  members: (->
+    ids = []
+    @get('member_ids').forEach (id) ->
+      ids.push id
+    @store.find('user', {ids: ids})
+  ).property('member_ids')
   include_tags: (new_tag) ->
     matched = false
     if @.get('tags')

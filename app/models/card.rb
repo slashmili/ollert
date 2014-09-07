@@ -16,6 +16,10 @@ class Card < ActiveRecord::Base
     members
   end
 
+  def member_ids=(ids)
+    members = ids
+  end
+
   private
 
   def set_default_members

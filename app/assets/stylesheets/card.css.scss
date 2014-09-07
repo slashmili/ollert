@@ -61,18 +61,21 @@ section.card {
 
   .menu {
     float: right;
-    .label-form {
+    .popup {
+      z-index: 99;
       position: absolute;
-      background-color: #fff;
-      max-height: 313px;
-      height: 257px;
-      width: 300px;
       border-radius: 3px;
       border-bottom-color: #c2c2c2;
       border: 1px solid #dbdbdb;
+      background-color: #fff;
+      width: 300px;
       ul {
         list-style: none;
       }
+    }
+    .label-form {
+      max-height: 313px;
+      height: 257px;
       li {
         border-radius: 3px;
         a {

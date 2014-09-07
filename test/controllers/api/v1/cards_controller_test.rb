@@ -35,11 +35,11 @@ describe Api::V1::CardsController do
     board.save
     card = create(:card, list_id: list_done.id, tags: %w[ green ], members:[0])
     card.tags.must_equal %w[ green ], "Card must have #green tag"
-    put :update, id: card, card: { list_id: list_done.id, position: 1000, title: 'updates card', tags: [], members: ["1"] }
+    put :update, id: card, card: { list_id: list_done.id, position: 1000, title: 'updates card', tags: [], member_ids: [] }
     assigns(:card).title.must_equal 'updates card'
     assigns(:card).position.must_equal 1000
     assigns(:card).tags.must_equal []
-    assigns(:card).members.must_equal ["1"]
+    assigns(:card).members.must_equal []
   end
 
   it "shows card" do

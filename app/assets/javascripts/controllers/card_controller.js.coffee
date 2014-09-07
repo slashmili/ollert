@@ -4,10 +4,16 @@ Ollert.CardController = Ember.ObjectController.extend
   editing_description: false
   adding_comment: false
   editing_lables: false
+  editing_members: false
   new_comment: ''
   board_tags: ( ->
     @get("controllers.board").get("model").get("tags")
   ).property()
+
+  memberships: ( ->
+    @get "controllers.board.model.memberships"
+  ).property()
+
   actions:
     cancel_card_title_form: () ->
       @set 'editing_title', false
@@ -52,4 +58,20 @@ Ollert.CardController = Ember.ObjectController.extend
       else
         tags.removeAt(tag_index, 1)
       @get('model').set('tags', tags)
+      @get('model').save()
+
+    edit_members_form: () ->
+      @toggleProperty 'editing_members'
+      false
+
+    add_remove_member: (user) ->
+      member_ids = @get('model').get('member_ids') || []
+      member_index = member_ids.indexOf(user.id)
+      console.log member_index
+      if member_index == -1
+        member_ids.pushObject user.id
+      else
+        member_ids.removeAt member_index, 1
+      console.log member_ids
+      @get('model').set('member_ids', member_ids)
       @get('model').save()

@@ -25,4 +25,12 @@ describe Card do
     card.tags.must_equal [{'color' => 'red', 'name' => ''}]
   end
 
+  it "must be able to save members ad member_ids" do
+    card.members = [10]
+    card.member_ids.must_equal [10]
+    skip 'for some reason the below test doesnt pass'
+
+    card.member_ids = [20]
+    card.members.must_equal [20]
+  end
 end

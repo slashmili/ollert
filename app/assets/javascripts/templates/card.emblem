@@ -19,13 +19,24 @@ section.card
         ul class="nav nav-pills nav-stacked"
           li.active
             a{action 'edit_label_form'} Lables
-        if editing_lables
-          section.label-form
-            header Labels
-            ul
-              each board_tags
-                li{action 'add_remove_tag' this} class="{{unbound this}}-label"
-                  a = name
+            if editing_lables
+              section.label-form class="popup"
+                header Labels
+                ul
+                  each board_tags
+                    li{action 'add_remove_tag' this} class="{{unbound this}}-label"
+                      a = name
+          li.active
+            a{action 'edit_members_form'} Members
+            if editing_members
+              section.members-form class="popup"
+                header Members
+                ul
+                  each memberships
+                    li{action 'add_remove_member' user}
+                      a
+                        img height="30px" src=user.avatar
+                        = user.name
     section.module
       if members
         section.members

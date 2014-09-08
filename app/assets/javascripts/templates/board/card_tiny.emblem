@@ -4,3 +4,9 @@
       view 'boardCardTinyLabel' label=this
         '
   section.title = title
+  section.badges
+    p
+  section.members
+    each members
+      img height="30px" src=avatar
+  .clear

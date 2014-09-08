@@ -7,10 +7,11 @@ Ollert.Card = DS.Model.extend
   tags: DS.attr('array')
   member_ids: DS.attr('array')
   members: (->
-    ids = []
+    members = []
+    self = @
     @get('member_ids').forEach (id) ->
-      ids.push id
-    @store.find('user', {ids: ids})
+      members.push self.store.find('user', id)
+    members
   ).property('member_ids')
   include_tags: (new_tag) ->
     matched = false

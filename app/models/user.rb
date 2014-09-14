@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   has_many :cards, through: :lists
   has_many :comments, through: :cards
 
-  before_save :set_default_params
+  before_create :set_default_params
 
   def self.from_omniauth(auth)
     if user = User.find_by_email(auth.info.email)
@@ -18,11 +18,9 @@ class User < ActiveRecord::Base
       user.uid = auth.uid
       user
     else
-      where(auth.slice(:provider, :uid)).first_or_create do |user|
+      where(auth.slice(:provider, :uid).to_hash).first_or_create do |user|
         user.provider = auth.provider
         user.uid = auth.uid
-        user.initials = auth.info.name.split(' ').map { |s| s.upcase.chars.first }.join('')
-        user.username = auth.info.email
         user.email = auth.info.email
         user.avatar = auth.info.image
         user.name = auth.info.name
@@ -33,16 +31,16 @@ class User < ActiveRecord::Base
   private
 
   def set_default_params
-    self.username = find_unique_username(email)
+    self.username = get_unique_username(email)
     self.initials = name.scan(/(\w)\w+/).join.upcase
   end
 
-  def find_unique_username(email)
+  def get_unique_username(email)
     index = 1
-    username = email.scan(/(.+)@.+/).first.try(:first)
+    base_username = username = email.scan(/(.+)@.+/).first.try(:first)
     loop do
       break unless User.find_by_username(username)
-      username = "#{username}#{index}"
+      username = "#{base_username}#{index}"
       index +=1
     end
     username

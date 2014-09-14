@@ -10,6 +10,8 @@ class User < ActiveRecord::Base
   has_many :cards, through: :lists
   has_many :comments, through: :cards
 
+  before_save :set_default_params
+
   def self.from_omniauth(auth)
     if user = User.find_by_email(auth.info.email)
       user.provider = auth.provider
@@ -26,5 +28,23 @@ class User < ActiveRecord::Base
         user.name = auth.info.name
       end
     end
+  end
+
+  private
+
+  def set_default_params
+    self.username = find_unique_username(email)
+    self.initials = name.scan(/(\w)\w+/).join.upcase
+  end
+
+  def find_unique_username(email)
+    index = 1
+    username = email.scan(/(.+)@.+/).first.try(:first)
+    loop do
+      break unless User.find_by_username(username)
+      username = "#{username}#{index}"
+      index +=1
+    end
+    username
   end
 end

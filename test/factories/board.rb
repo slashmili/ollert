@@ -20,6 +20,7 @@ FactoryGirl.define do
     username
     initials "SR"
     password 'f4k3p455w0rd'
+    name "Mr User"
   end
 
   factory :card do

@@ -1,7 +1,5 @@
 require 'test_helper'
 
-
-
 describe Board do
   let(:user) { create(:user) }
   let(:board) { create(:board, user_id: user.id) }
@@ -45,4 +43,7 @@ describe Board do
     board.can_read_by?(user).must_equal true
   end
 
+  it "wont allow a board with empty title" do
+    lambda {create(:board, user_id: user.id, title: '')}.must_raise(ActiveRecord::RecordInvalid)
+  end
 end

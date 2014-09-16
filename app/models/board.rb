@@ -1,5 +1,6 @@
 class Board < ActiveRecord::Base
-  validates :title, presence: true, uniqueness: true
+  validates :title, presence: true
+  validates_uniqueness_of :title, scope: :user_id
   has_many :lists
   belongs_to :user #creator
   has_many :memberships

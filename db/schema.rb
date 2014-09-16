@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140831164807) do
+ActiveRecord::Schema.define(version: 20140916041035) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 20140831164807) do
     t.json     "tags"
   end
 
-  add_index "boards", ["title"], name: "index_boards_on_title", unique: true, using: :btree
+  add_index "boards", ["title", "user_id"], name: "index_boards_on_title_and_user_id", unique: true, using: :btree
 
   create_table "cards", force: true do |t|
     t.string   "title",       null: false

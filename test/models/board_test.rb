@@ -9,8 +9,8 @@ describe Board do
   end
 
   it "wont save a board with the same name" do
-    Board.create!(:title => "Foo", user_id: user.id)
-    lambda {Board.create!(:title => "Foo")}.must_raise(ActiveRecord::RecordInvalid)
+    create(:board, :title => "Foo", user_id: user.id)
+    lambda {create(:board, :title => "Foo", user_id: user.id)}.must_raise(ActiveRecord::RecordInvalid)
   end
 
   it "must create 3 list immediately after creation of new board" do
@@ -45,5 +45,14 @@ describe Board do
 
   it "wont allow a board with empty title" do
     lambda {create(:board, user_id: user.id, title: '')}.must_raise(ActiveRecord::RecordInvalid)
+  end
+
+  it "must allow two users have a board with same name" do
+    sam = create(:user)
+
+    board_joe = create(:board, user_id: user.id)
+    board_sam = create(:board, user_id: sam.id, title: board_joe.title)
+
+    board_joe.title.must_equal board_sam.title
   end
 end

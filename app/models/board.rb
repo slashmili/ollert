@@ -5,10 +5,13 @@ class Board < ActiveRecord::Base
   belongs_to :user #creator
   has_many :memberships
   has_many :users, through: :memberships
+
   before_create :set_default_tags
   after_create :assign_admin
   after_create :create_default_list
+
   scope :accessible, lambda { |u| where('public = ? or user_id = ?', true, u.id) }
+  default_scope { where(archived: false) }
 
   TAGS = %w[ green yellow orange red purple blue ]
 

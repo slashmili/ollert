@@ -47,4 +47,12 @@ describe Api::V1::BoardsController do
     response.status.must_equal 200
   end
 
+  it "must only list boards that are not archived" do
+    sign_in @user
+    board_foo = create(:board, user_id: @user.id, title: 'Foo')
+    board_bar = create(:board, user_id: @user.id, title: 'Bar', archived: true)
+
+    get :index, format: :json
+    assigns(:boards).length.must_equal 1
+  end
 end

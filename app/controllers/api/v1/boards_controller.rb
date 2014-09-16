@@ -4,11 +4,11 @@ class Api::V1::BoardsController < ApplicationController
   skip_before_filter :authenticate_user!, only: [:index, :show]
 
   def index
+    @boards = []
     if current_user
-      respond_with current_user.boards
-    else
-      respond_with boards: []
+      @boards = current_user.boards
     end
+    respond_with @boards
   end
 
   def create

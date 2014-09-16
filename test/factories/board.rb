@@ -13,6 +13,7 @@ FactoryGirl.define do
 
   factory :board do
     title
+    archived false
   end
 
   factory :user do

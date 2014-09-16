@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140916041035) do
+ActiveRecord::Schema.define(version: 20140916051351) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20140916041035) do
     t.integer  "user_id",    default: 0,     null: false
     t.boolean  "public",     default: false
     t.json     "tags"
+    t.boolean  "archived",   default: false
   end
 
   add_index "boards", ["title", "user_id"], name: "index_boards_on_title_and_user_id", unique: true, using: :btree

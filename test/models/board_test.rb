@@ -55,4 +55,9 @@ describe Board do
 
     board_joe.title.must_equal board_sam.title
   end
+
+  it "must be able to mark a board to archive" do
+    board = create(:board, user_id: user.id, public: true, archived: true)
+    board.archived.must_equal true
+  end
 end

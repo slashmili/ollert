@@ -4,14 +4,9 @@ Rails.application.routes.draw do
     :registrations => "users/registrations"
   }
 
-  resources :cards
 
   get 'users/current_user', to: 'sessions#index'
 
-  resources :boards
-  resources :lists do
-    resources :cards
-  end
 
 
   root 'dashboard#ember'
